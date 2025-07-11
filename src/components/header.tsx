@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -26,6 +27,12 @@ export function Header() {
             className="transition-colors hover:text-primary"
           >
             List Your Space
+          </Link>
+          <Link
+            href="/discover-from-image"
+            className="transition-colors hover:text-primary"
+          >
+            Discover from Image
           </Link>
           <Link
             href="/community"
