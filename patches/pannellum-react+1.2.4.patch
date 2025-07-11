@@ -1,0 +1,44 @@
+diff --git a/node_modules/pannellum-react/es/components/Pannellum.js b/node_modules/pannellum-react/es/components/Pannellum.js
+index a3df931..d038237 100644
+--- a/node_modules/pannellum-react/es/components/Pannellum.js
++++ b/node_modules/pannellum-react/es/components/Pannellum.js
+@@ -107,4 +107,4 @@
+   video: _propTypes2.default.string
+ };
+ 
+-exports.default = Pannellum;
+\ No newline at end of file
++exports.default = Pannellum;
+diff --git a/node_modules/pannellum-react/es/components/Pannellum.module.css b/node_modules/pannellum-react/es/components/Pannellum.module.css
+new file mode 100644
+index 0000000..e69de29
+diff --git a/node_modules/pannellum-react/package.json b/node_modules/pannellum-react/package.json
+index 544749f..33f1190 100644
+--- a/node_modules/pannellum-react/package.json
++++ b/node_modules/pannellum-react/package.json
+@@ -37,13 +37,13 @@
+     "babel-preset-stage-0": "^6.24.1",
+     "chai": "^4.1.2",
+     "chai-enzyme": "^1.0.0-beta.0",
+-    "cheerio": "^1.0.0-rc.2",
++    "cheerio": "^0.22.0",
+     "enzyme": "^3.3.0",
+     "enzyme-adapter-react-16": "^1.1.1",
+     "eslint": "^4.19.1",
+     "eslint-plugin-react": "^7.8.2",
+     "jsdom": "^11.11.0",
+-    "mocha": "^5.2.0",
++    "mocha": "^4.0.0",
+     "prop-types": "15.x",
+     "react": "16.x",
+     "react-dom": "16.x",
+@@ -51,7 +51,7 @@
+     "sinon": "^6.0.0"
+   },
+   "peerDependencies": {
+-    "react": "16.x",
+-    "prop-types": "15.x"
++    "react": "16.x || 17.x || 18.x",
++    "prop-types": "15.x || 16.x || 17.x || 18.x"
+   }
+ }

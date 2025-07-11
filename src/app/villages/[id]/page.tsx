@@ -1,18 +1,12 @@
 import { getVillageById } from "@/lib/mock-data";
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 import { Badge } from "@/components/ui/badge";
-import { MapPin, Trees, Sun } from "lucide-react";
+import { MapPin, Trees, Sun, Eye } from "lucide-react";
 import { BookingCard } from "@/components/booking-card";
 import { NearbyAttractions } from "@/components/nearby-attractions";
 import { InstagramSummary } from "@/components/instagram-summary";
+import { PannellumViewer } from "@/components/pannellum-viewer";
 
 type VillagePageProps = {
   params: {
@@ -42,26 +36,13 @@ export default function VillagePage({ params }: VillagePageProps) {
       <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">
         <div className="lg:col-span-2">
           <div className="mb-8">
-            <h2 className="text-2xl font-headline font-semibold mb-4">VR Preview</h2>
-            <Carousel className="w-full" opts={{ loop: true }}>
-              <CarouselContent>
-                {village.vrImages.map((src, index) => (
-                  <CarouselItem key={index}>
-                    <div className="aspect-video relative rounded-lg overflow-hidden">
-                      <Image
-                        src={src}
-                        alt={`VR Preview of ${village.name} ${index + 1}`}
-                        fill
-                        className="object-cover"
-                        data-ai-hint="360 landscape"
-                      />
-                    </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious className="left-4" />
-              <CarouselNext className="right-4" />
-            </Carousel>
+            <h2 className="text-2xl font-headline font-semibold mb-4 flex items-center gap-2">
+                <Eye className="h-6 w-6 text-primary" />
+                360° Interactive View
+            </h2>
+            <div className="aspect-video w-full rounded-lg overflow-hidden border">
+                <PannellumViewer images={village.vrImages} />
+            </div>
           </div>
 
           <div className="prose prose-lg max-w-none text-foreground/90 mb-8">
