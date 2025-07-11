@@ -17,14 +17,23 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
-import { QrCode, Upload, Leaf, ScanSearch, Loader2, Sparkles, ChevronDown } from 'lucide-react';
+import { QrCode, Upload, Leaf, ScanSearch, Loader2, Sparkles, ChevronDown, BadgePercent, Tag } from 'lucide-react';
 import { useState } from 'react';
-import { getLocationFromImage } from '../actions';
+import { getLocationFromImage, getSuggestedPrice } from '../actions';
+import type { SuggestPriceOutput } from '@/ai/flows/suggest-price';
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible"
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+} from '@/components/ui/dialog';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 
 const formSchema = z.object({
@@ -55,10 +64,26 @@ const ecoBadges = [
   { id: 'waste-management', label: 'Waste Management Practices' },
 ];
 
+const MarkdownRenderer = ({ content }: { content: string }) => {
+  const html = content
+    .split('\n')
+    .map(line => {
+      if (line.trim().startsWith('✅')) {
+        return `<li class="flex items-start gap-2 mb-2"><span class="mt-1">✅</span><span>${line.substring(2).trim()}</span></li>`;
+      }
+      return '';
+    })
+    .join('');
+  return <ul className="list-none p-0" dangerouslySetInnerHTML={{ __html: html }} />;
+};
+
+
 export default function ListYourSpacePage() {
   const { toast } = useToast();
   const [isScanning, setIsScanning] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isAutofillOpen, setIsAutofillOpen] = useState(false);
+  const [priceSuggestion, setPriceSuggestion] = useState<SuggestPriceOutput | null>(null);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -106,8 +131,24 @@ export default function ListYourSpacePage() {
   };
 
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsSubmitting(true);
+    try {
+      const result = await getSuggestedPrice(values);
+      setPriceSuggestion(result);
+    } catch (error) {
+       toast({
+        variant: 'destructive',
+        title: 'An error occurred',
+        description: 'Could not generate a price suggestion at this time.',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
+  
+  const handleFinalizeListing = () => {
+    setPriceSuggestion(null);
     toast({
       title: 'Listing Submitted!',
       description: 'Your space has been submitted for review. Thank you!',
@@ -115,7 +156,9 @@ export default function ListYourSpacePage() {
     form.reset();
   }
 
+
   return (
+    <>
     <div className="container mx-auto px-4 py-16 md:py-24">
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-12">
@@ -312,13 +355,55 @@ export default function ListYourSpacePage() {
                 <QrCode className="mr-2 h-4 w-4" />
                 Generate QR Code
               </Button>
-              <Button type="submit" className="w-full" size="lg">
-                Submit Listing
+              <Button type="submit" className="w-full" size="lg" disabled={isSubmitting}>
+                {isSubmitting ? (
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                ) : (
+                  <BadgePercent className="mr-2 h-4 w-4" />
+                )}
+                Suggest Price & Submit
               </Button>
             </div>
           </form>
         </Form>
       </div>
     </div>
+    
+    <Dialog open={!!priceSuggestion} onOpenChange={(isOpen) => !isOpen && setPriceSuggestion(null)}>
+        <DialogContent className="sm:max-w-md">
+            <DialogHeader>
+                <DialogTitle className="text-2xl font-headline flex items-center gap-2">
+                    <Sparkles className="h-6 w-6 text-primary" />
+                    AI-Powered Price Suggestion
+                </DialogTitle>
+                <DialogDescription>
+                    Based on your listing details, here’s a recommended nightly price to attract travelers.
+                </DialogDescription>
+            </DialogHeader>
+            <div className="py-4 space-y-4">
+                <div className="text-center bg-primary/10 rounded-lg p-4">
+                    <p className="text-sm text-muted-foreground">Suggested Price</p>
+                    <p className="text-4xl font-bold text-primary">
+                        ₹{priceSuggestion?.suggestedPrice}
+                        <span className="text-lg font-normal text-muted-foreground">/night</span>
+                    </p>
+                </div>
+                <div>
+                    <h4 className="font-semibold mb-2">Justification:</h4>
+                    {priceSuggestion?.justification && <MarkdownRenderer content={priceSuggestion.justification} />}
+                </div>
+            </div>
+            <DialogFooter className="sm:justify-between flex-col sm:flex-row gap-2">
+                <Button type="button" variant="outline" onClick={() => setPriceSuggestion(null)}>
+                    <Tag className="mr-2 h-4 w-4" />
+                    Set Price Manually
+                </Button>
+                <Button type="button" onClick={handleFinalizeListing}>
+                    Accept & Finalize Listing
+                </Button>
+            </DialogFooter>
+        </DialogContent>
+    </Dialog>
+    </>
   );
 }
