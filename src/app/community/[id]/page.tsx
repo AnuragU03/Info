@@ -1,21 +1,17 @@
 'use client';
 
 import { getVillageById } from '@/lib/mock-data';
-import { notFound } from 'next/navigation';
+import { notFound, useParams } from 'next/navigation';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';
 import { Send } from 'lucide-react';
 
-type CommunityPageProps = {
-  params: {
-    id: string;
-  };
-};
-
-export default function CommunityPage({ params }: CommunityPageProps) {
-  const village = getVillageById(params.id);
+export default function CommunityPage() {
+  const params = useParams();
+  const villageId = Array.isArray(params.id) ? params.id[0] : params.id;
+  const village = getVillageById(villageId);
 
   if (!village) {
     notFound();
