@@ -17,9 +17,15 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
-import { QrCode, Upload, Leaf, ScanSearch, Loader2 } from 'lucide-react';
+import { QrCode, Upload, Leaf, ScanSearch, Loader2, Sparkles, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 import { getLocationFromImage } from '../actions';
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible"
+import { Card, CardContent, CardHeader } from '@/components/ui/card';
 
 const formSchema = z.object({
   villageName: z.string().min(2, {
@@ -52,6 +58,7 @@ const ecoBadges = [
 export default function ListYourSpacePage() {
   const { toast } = useToast();
   const [isScanning, setIsScanning] = useState(false);
+  const [isAutofillOpen, setIsAutofillOpen] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -122,32 +129,55 @@ export default function ListYourSpacePage() {
 
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-            <FormField
-              control={form.control}
-              name="imageUrl"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-lg">Autofill from Image</FormLabel>
-                   <FormDescription>
-                      Paste an image URL (e.g., from a social media post) and we'll try to identify the location.
-                    </FormDescription>
-                  <FormControl>
-                    <div className="flex items-center gap-2">
-                      <Input placeholder="https://instagram.com/p/..." {...field} />
-                      <Button type="button" onClick={handleAutofill} disabled={isScanning}>
-                        {isScanning ? (
-                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                        ) : (
-                           <ScanSearch className="mr-2 h-4 w-4" />
-                        )}
-                        Analyze
-                      </Button>
-                    </div>
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+            <Collapsible open={isAutofillOpen} onOpenChange={setIsAutofillOpen}>
+              <Card>
+                <CardHeader>
+                  <CollapsibleTrigger asChild>
+                    <button type="button" className="flex justify-between items-center w-full">
+                        <div className="text-left">
+                            <h2 className="text-lg font-semibold flex items-center gap-2">
+                                <Sparkles className="h-5 w-5 text-primary" />
+                                Autofill from Image
+                            </h2>
+                            <p className="text-sm text-muted-foreground">Save time by letting AI identify your location.</p>
+                        </div>
+                        <ChevronDown className={`h-5 w-5 transition-transform ${isAutofillOpen ? 'rotate-180' : ''}`} />
+                    </button>
+                    </CollapsibleTrigger>
+                </CardHeader>
+                <CollapsibleContent>
+                    <CardContent>
+                      <FormField
+                          control={form.control}
+                          name="imageUrl"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Image URL</FormLabel>
+                              <FormDescription>
+                                  Paste an image URL (e.g., from a social media post) and we'll try to identify the location.
+                                </FormDescription>
+                              <FormControl>
+                                <div className="flex items-center gap-2">
+                                  <Input placeholder="https://instagram.com/p/..." {...field} />
+                                  <Button type="button" onClick={handleAutofill} disabled={isScanning}>
+                                    {isScanning ? (
+                                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                    ) : (
+                                      <ScanSearch className="mr-2 h-4 w-4" />
+                                    )}
+                                    Analyze
+                                  </Button>
+                                </div>
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                    </CardContent>
+                </CollapsibleContent>
+              </Card>
+            </Collapsible>
+            
             <FormField
               control={form.control}
               name="villageName"

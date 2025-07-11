@@ -38,7 +38,7 @@ const prompt = ai.definePrompt({
   output: {schema: IdentifyLocationFromImageOutputSchema},
   prompt: `You are an expert at identifying locations from images.
 
-  Analyze the following image and identify the village/city and country.
+  Analyze the following image and identify the village/city and country. Pay close attention to landmarks, geography, architecture, and any text that might be visible. Your goal is to be as precise as possible with the location name.
 
   Image: {{media url=imageUrl}}`,
 });
