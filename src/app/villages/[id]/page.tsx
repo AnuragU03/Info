@@ -3,12 +3,12 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { MapPin, Trees, Sun, Eye } from "lucide-react";
-import { BookingCard } from "@/components/booking-card";
 import { NearbyAttractions } from "@/components/nearby-attractions";
 import { InstagramSummary } from "@/components/instagram-summary";
 import { PannellumViewer } from "@/components/pannellum-viewer";
 import { AccommodationsList } from "@/components/accommodations-list";
 import { Separator } from "@/components/ui/separator";
+import { ItineraryPlanner } from "@/components/itinerary-planner";
 
 type VillagePageProps = {
   params: {
@@ -71,7 +71,11 @@ export default function VillagePage({ params }: VillagePageProps) {
         </div>
 
         <div className="lg:col-span-1 space-y-8">
-          <BookingCard />
+          <ItineraryPlanner
+            villageName={village.name}
+            culturalAttractions={village.culturalAttractions}
+            uniqueOfferings={village.uniqueOfferings}
+          />
           <NearbyAttractions 
             villageName={village.name}
             latitude={village.coordinates.latitude}

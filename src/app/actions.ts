@@ -3,6 +3,9 @@
 import { suggestNearbyAttractions } from '@/ai/flows/suggest-nearby-attractions';
 import { summarizeInstagramPosts } from '@/ai/flows/summarize-instagram-posts';
 import { identifyLocationFromImage } from '@/ai/flows/identify-location-from-image';
+import { generateItinerary } from '@/ai/flows/generate-itinerary';
+import type { GenerateItineraryInput } from '@/ai/flows/generate-itinerary';
+
 
 export async function getNearbyAttractions(villageName: string, latitude: number, longitude: number) {
   try {
@@ -38,5 +41,15 @@ export async function getLocationFromImage(imageUrl: string) {
     } catch (error) {
         console.error('Error identifying location from image:', error);
         return null;
+    }
+}
+
+export async function getItinerary(input: GenerateItineraryInput) {
+    try {
+        const result = await generateItinerary(input);
+        return result.itinerary;
+    } catch (error) {
+        console.error('Error generating itinerary:', error);
+        return 'Could not generate an itinerary at this time. Please try again later.';
     }
 }

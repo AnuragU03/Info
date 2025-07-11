@@ -1,6 +1,7 @@
 import { type Accommodation } from "@/lib/mock-data";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "./ui/card";
-import { BedDouble, Home } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "./ui/card";
+import { BedDouble, Home, CreditCard } from "lucide-react";
+import { Button } from "./ui/button";
 
 type AccommodationsListProps = {
     accommodations: Accommodation[];
@@ -23,7 +24,7 @@ export function AccommodationsList({ accommodations }: AccommodationsListProps) 
             </h2>
             <div className="grid gap-6">
                 {accommodations.map((item, index) => (
-                    <Card key={index} className="shadow-md hover:shadow-lg transition-shadow">
+                    <Card key={index} className="shadow-md hover:shadow-lg transition-shadow flex flex-col">
                         <CardHeader className="flex flex-row items-center gap-4 space-y-0">
                             {accommodationIcons[item.type]}
                             <div className="flex-1">
@@ -31,9 +32,15 @@ export function AccommodationsList({ accommodations }: AccommodationsListProps) 
                                 <CardDescription>{item.type}</CardDescription>
                             </div>
                         </CardHeader>
-                        <CardContent>
+                        <CardContent className="flex-grow">
                             <p className="text-foreground/80">{item.description}</p>
                         </CardContent>
+                        <CardFooter>
+                             <Button className="w-full">
+                                <CreditCard className="mr-2 h-4 w-4" />
+                                Check Availability & Book
+                            </Button>
+                        </CardFooter>
                     </Card>
                 ))}
             </div>
