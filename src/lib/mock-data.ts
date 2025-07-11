@@ -1,3 +1,4 @@
+
 export type Accommodation = {
   name: string;
   type: 'Homestay' | 'Hotel';
@@ -121,47 +122,47 @@ export const villages: Village[] = [
     ]
   },
   {
-    id: "zardari",
-    name: "Zardari",
-    location: "Rajasthan, India",
-    shortDescription: "A vibrant desert village famous for its folk art and craft.",
-    longDescription: "Zardari is a splash of color in the heart of the Thar Desert. This Rajasthani village is renowned for its rich traditions of folk music, dance, and craftsmanship. The local artisans create exquisite textiles, pottery, and leather goods. Visitors can experience the warmth of Rajasthani hospitality in traditional homestays, enjoy camel safaris into the dunes, and witness mesmerizing cultural performances under the starry desert sky.",
+    id: "hampi",
+    name: "Hampi",
+    location: "Karnataka, India",
+    shortDescription: "An ancient village of ruins, a UNESCO World Heritage Site.",
+    longDescription: "Hampi, a UNESCO World Heritage Site in Karnataka, is a captivating landscape of ancient ruins, giant boulders, and Dravidian temples. Once the capital of the Vijayanagara Empire, its vast, open-air museum is dotted with magnificent temples, palace remains, and riverside ruins that transport you back in time. It's a dream destination for history buffs, rock climbers, and spiritual seekers.",
     mainImage: "https://placehold.co/600x400.png",
     vrImages: [
       "https://placehold.co/4096x2048.png",
       "https://placehold.co/4096x2048.png",
     ],
-    coordinates: { latitude: 26.9124, longitude: 75.7873 },
+    coordinates: { latitude: 15.3350, longitude: 76.4600 },
     instagramPosts: [
-      "The colors and crafts of Zardari have stolen my heart. #Rajasthan #Handicrafts",
-      "Sunset camel ride in the Thar Desert. An experience for the soul. #IncredibleIndia",
-      "The folk music here is just magical. So much history and emotion in every note. #FolkMusic",
+      "Exploring the ancient ruins of Hampi. So much history in one place! #Hampi #IncredibleIndia",
+      "Sunset over the Tungabhadra river with the temples in the background. Magical!",
+      "Rented a scooter and explored the boulder-strewn landscape. Feels like another planet. #HampiDiaries",
     ],
-    culturalAttractions: "Kalbelia dance performances, Mandana paintings on mud walls, local artisan workshops.",
-    uniqueOfferings: "Camel safaris, block-printing workshops, desert camping experiences.",
+    culturalAttractions: "Virupaksha Temple, Vittala Temple (with its musical pillars), Royal Enclosure ruins.",
+    uniqueOfferings: "Coracle boat rides on the river, bouldering and rock climbing, bicycle tours of the ruins.",
     accommodations: [
         { 
-          name: "Desert Rose Homestay", 
+          name: "Riverside Ruins Homestay", 
           type: "Homestay", 
-          description: "Live like a local in a beautifully decorated traditional home.",
+          description: "A peaceful stay with views of the Tungabhadra river and ancient ruins.",
           vrImages: ["https://placehold.co/4096x2048.png", "https://placehold.co/4096x2048.png"]
         },
         { 
-          name: "The Royal Haveli", 
+          name: "The Boulder Retreat", 
           type: "Hotel", 
-          description: "A heritage hotel offering a glimpse into Rajasthan's royal past.",
+          description: "A unique hotel built amidst Hampi's famous boulders, offering modern comfort.",
           vrImages: ["https://placehold.co/4096x2048.png"]
         },
         { 
-          name: "Mirage Camp", 
+          name: "Temple View Guesthouse", 
           type: "Hotel", 
-          description: "Luxury tents in the desert with cultural programs every evening.",
+          description: "Simple and clean rooms located conveniently near the main temple complex.",
           vrImages: ["https://placehold.co/4096x2048.png"]
         },
     ],
     communityPosts: [
-        { id: '1', author: 'Artsy_Anna', avatarUrl: 'https://placehold.co/100x100.png', timestamp: '3 days ago', message: 'I attended a block-printing workshop here and it was amazing! The local artisans are so talented.' },
-        { id: '2', author: 'Desert_Dan', avatarUrl: 'https://placehold.co/100x100.png', timestamp: '1 day ago', message: 'The evening cultural show at Mirage Camp was the highlight of my trip. Highly recommended!' },
+        { id: '1', author: 'HistoryBuff_Raj', avatarUrl: 'https://placehold.co/100x100.png', timestamp: '4 days ago', message: 'Does anyone have a recommendation for a good guide for the Vittala Temple complex? Want to know all the details!' },
+        { id: '2', author: 'Climber_Chris', avatarUrl: 'https://placehold.co/100x100.png', timestamp: '2 days ago', message: 'The bouldering scene here is insane! Any other climbers around this week?' },
     ]
   },
   {
