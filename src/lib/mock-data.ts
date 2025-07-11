@@ -32,9 +32,8 @@ export const villages: Village[] = [
     longDescription: "Nestled in the East Khasi Hills of Meghalaya, Mawali is a picturesque village that offers a unique blend of natural beauty and cultural heritage. It is famed for its incredible living root bridges, handcrafted by the local Khasi tribes over generations. The village is surrounded by dense tropical forests, sparkling waterfalls, and a tranquil atmosphere, making it a perfect escape for nature lovers and those seeking peace.",
     mainImage: "https://placehold.co/600x400.png",
     vrImages: [
-      "https://placehold.co/1200x600.png",
-      "https://placehold.co/1200x600.png",
-      "https://placehold.co/1200x600.png",
+      "/360/living-root-bridge.jpg",
+      "/360/mawlynnong-village.jpg",
     ],
     coordinates: { latitude: 25.4939, longitude: 91.8756 },
     instagramPosts: [
@@ -49,19 +48,19 @@ export const villages: Village[] = [
           name: "Serene Homestay", 
           type: "Homestay", 
           description: "A cozy stay with a local family, offering authentic Khasi meals.",
-          vrImages: ["https://placehold.co/1200x600.png", "https://placehold.co/1200x600.png"]
+          vrImages: ["/360/homestay-room-1.jpg", "/360/homestay-living-area.jpg"]
         },
         { 
           name: "Root Bridge View Resort", 
           type: "Hotel", 
           description: "A comfortable hotel with stunning views of the surrounding forests.",
-          vrImages: ["https://placehold.co/1200x600.png"]
+          vrImages: ["/360/hotel-room-1.jpg"]
         },
         { 
           name: "Jungle Vibe Homestay", 
           type: "Homestay", 
           description: "Experience the jungle up close in this rustic and charming homestay.",
-          vrImages: ["https://placehold.co/1200x600.png", "https://placehold.co/1200x600.png"]
+          vrImages: ["/360/homestay-room-2.jpg", "/360/homestay-exterior.jpg"]
         },
     ],
   },
@@ -73,9 +72,8 @@ export const villages: Village[] = [
     longDescription: "Perched at an elevation of 3,662 meters in the starkly beautiful Spiti Valley, Nako is a village that seems frozen in time. Its centerpiece is the sacred Nako Lake, surrounded by willow and poplar trees. The village is also home to several ancient Buddhist monasteries, adorned with intricate murals and scriptures. The air is thin, the views are panoramic, and the sense of spirituality is profound.",
     mainImage: "https://placehold.co/600x400.png",
     vrImages: [
-      "https://placehold.co/2048x1024.png",
-      "https://placehold.co/2048x1024.png",
-      "https://placehold.co/2048x1024.png",
+      "/360/nako-village.jpg",
+      "/360/nako-monastery.jpg",
     ],
     coordinates: { latitude: 31.8801, longitude: 78.6315 },
     instagramPosts: [
@@ -90,19 +88,19 @@ export const villages: Village[] = [
           name: "Lake View Hotel", 
           type: "Hotel", 
           description: "Wake up to mesmerizing views of Nako Lake and the Himalayas.",
-          vrImages: ["https://placehold.co/2048x1024.png"]
+          vrImages: ["/360/hotel-room-2.jpg"]
         },
         { 
           name: "Himalayan Homestay", 
           type: "Homestay", 
           description: "Experience the warm hospitality of a local Spitian family.",
-          vrImages: ["https://placehold.co/2048x1024.png", "https://placehold.co/2048x1024.png"]
+          vrImages: ["/360/homestay-room-3.jpg", "/360/homestay-living-area.jpg"]
         },
         { 
           name: "Nako Retreat", 
           type: "Hotel", 
           description: "A peaceful retreat offering comfortable rooms and guided tours.",
-          vrImages: ["https://placehold.co/2048x1024.png"]
+          vrImages: ["/360/hotel-room-1.jpg"]
         },
     ],
   },
@@ -114,9 +112,8 @@ export const villages: Village[] = [
     longDescription: "Zardari is a splash of color in the heart of the Thar Desert. This Rajasthani village is renowned for its rich traditions of folk music, dance, and craftsmanship. The local artisans create exquisite textiles, pottery, and leather goods. Visitors can experience the warmth of Rajasthani hospitality in traditional homestays, enjoy camel safaris into the dunes, and witness mesmerizing cultural performances under the starry desert sky.",
     mainImage: "https://placehold.co/600x400.png",
     vrImages: [
-      "https://placehold.co/1200x600.png",
-      "https://placehold.co/1200x600.png",
-      "https://placehold.co/1200x600.png",
+      "/360/rajasthan-village.jpg",
+      "/360/desert-landscape.jpg",
     ],
     coordinates: { latitude: 26.9124, longitude: 75.7873 },
     instagramPosts: [
@@ -131,19 +128,19 @@ export const villages: Village[] = [
           name: "Desert Rose Homestay", 
           type: "Homestay", 
           description: "Live like a local in a beautifully decorated traditional home.",
-          vrImages: ["https://placehold.co/1200x600.png", "https://placehold.co/1200x600.png"]
+          vrImages: ["/360/homestay-room-1.jpg", "/360/homestay-exterior.jpg"]
         },
         { 
           name: "The Royal Haveli", 
           type: "Hotel", 
           description: "A heritage hotel offering a glimpse into Rajasthan's royal past.",
-          vrImages: ["https://placehold.co/1200x600.png"]
+          vrImages: ["/360/hotel-room-1.jpg"]
         },
         { 
           name: "Mirage Camp", 
           type: "Hotel", 
           description: "Luxury tents in the desert with cultural programs every evening.",
-          vrImages: ["https://placehold.co/1200x600.png"]
+          vrImages: ["/360/luxury-tent.jpg"]
         },
     ],
   },
@@ -155,9 +152,8 @@ export const villages: Village[] = [
     longDescription: "Araku Valley is a verdant paradise nestled in the Eastern Ghats. Famous for its aromatic coffee plantations, the valley is also home to several indigenous tribal communities. The journey to Araku by train, through tunnels and over bridges, is an adventure in itself. Visitors can explore tribal museums, trek to stunning waterfalls like Katiki, and savor the unique flavor of locally grown organic coffee.",
     mainImage: "https://placehold.co/600x400.png",
     vrImages: [
-      "https://placehold.co/1200x600.png",
-      "https://placehold.co/1200x600.png",
-      "https://placehold.co/1200x600.png",
+      "/360/araku-valley.jpg",
+      "/360/coffee-plantation.jpg",
     ],
     coordinates: { latitude: 18.3333, longitude: 82.8667 },
     instagramPosts: [
@@ -172,19 +168,19 @@ export const villages: Village[] = [
           name: "Coffee County Homestay", 
           type: "Homestay", 
           description: "Stay amidst a coffee plantation and learn about coffee making.",
-          vrImages: ["https://placehold.co/1200x600.png", "https://placehold.co/1200x600.png"]
+          vrImages: ["/360/homestay-room-2.jpg", "/360/homestay-exterior.jpg"]
         },
         { 
           name: "Valley View Resort", 
           type: "Hotel", 
           description: "A resort offering panoramic views of the entire Araku Valley.",
-          vrImages: ["https://placehold.co/1200x600.png"]
+          vrImages: ["/360/hotel-room-2.jpg"]
         },
         { 
           name: "Tribal Traditions", 
           type: "Homestay", 
           description: "An authentic stay with a local tribal family to learn their way of life.",
-          vrImages: ["https://placehold.co/1200x600.png"]
+          vrImages: ["/360/homestay-room-3.jpg"]
         },
     ],
   },
