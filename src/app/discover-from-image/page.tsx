@@ -23,8 +23,7 @@ export default function DiscoverFromImagePage() {
   const { toast } = useToast();
   const [isScanning, setIsScanning] = useState(false);
   const [locationResult, setLocationResult] = useState<IdentifyLocationFromImageOutput | null>(null);
-  const [submittedImageUrl, setSubmittedImageUrl] = useState<string | null>(null);
-
+  
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -35,7 +34,6 @@ export default function DiscoverFromImagePage() {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     setIsScanning(true);
     setLocationResult(null);
-    setSubmittedImageUrl(values.imageUrl);
     try {
       const result = await getLocationFromImage(values.imageUrl);
       if (result) {
@@ -108,7 +106,7 @@ export default function DiscoverFromImagePage() {
           </CardContent>
         </Card>
 
-        {(isScanning || locationResult || submittedImageUrl) && (
+        {(isScanning || locationResult) && (
           <div className="mt-8">
             <h2 className="text-2xl font-headline font-semibold mb-4 text-center">Analysis Result</h2>
             <Card>
@@ -120,17 +118,17 @@ export default function DiscoverFromImagePage() {
                          </div>
                     )}
                     
-                    {submittedImageUrl && !isScanning && (
+                    {locationResult && !isScanning && (
                          <div className="flex flex-col md:flex-row gap-6 items-start">
                              <Image 
-                                 src={submittedImageUrl} 
-                                 alt="Submitted for analysis" 
+                                 src={locationResult.generatedImageUrl} 
+                                 alt={`A representative image of ${locationResult.villageName}`}
                                  width={200} height={200} 
                                  className="rounded-lg object-cover aspect-square"
-                                 data-ai-hint="location"
+                                 data-ai-hint="village landscape"
                              />
                              <div className="flex-1 pt-2">
-                                 {locationResult ? (
+                                 {locationResult.villageName ? (
                                      <div className="space-y-3">
                                          <h3 className="text-xl font-bold font-headline">{locationResult.villageName}</h3>
                                          <div className="flex items-center text-muted-foreground">
@@ -146,6 +144,12 @@ export default function DiscoverFromImagePage() {
                                  )}
                              </div>
                          </div>
+                    )}
+
+                    {!locationResult && !isScanning && form.formState.isSubmitted && (
+                         <p className="text-destructive-foreground bg-destructive/10 border border-destructive/50 p-4 rounded-md text-center">
+                            We could not confidently identify a location from this image. Please try another one.
+                         </p>
                     )}
                 </CardContent>
             </Card>
