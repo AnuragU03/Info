@@ -19,9 +19,15 @@ type PannellumViewerProps = {
 export function PannellumViewer({ images }: PannellumViewerProps) {
   const viewerRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [viewerId, setViewerId] = useState('');
 
   useEffect(() => {
-    if (viewerRef.current && images.length > 0 && typeof window.pannellum !== 'undefined') {
+    // Generate a unique ID only on the client side
+    setViewerId(`pannellum-viewer-${Math.random().toString(36).substr(2, 9)}`);
+  }, []);
+
+  useEffect(() => {
+    if (viewerId && viewerRef.current && images.length > 0 && typeof window.pannellum !== 'undefined') {
       // Ensure the pannellum stylesheet is loaded
       const linkId = 'pannellum-css';
       if (!document.getElementById(linkId)) {
@@ -45,7 +51,7 @@ export function PannellumViewer({ images }: PannellumViewerProps) {
         viewer.destroy();
       };
     }
-  }, [currentIndex, images]);
+  }, [currentIndex, images, viewerId]);
 
   const handleNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
@@ -61,11 +67,9 @@ export function PannellumViewer({ images }: PannellumViewerProps) {
     return <div className="flex items-center justify-center h-full bg-muted">No images available for a 360° view.</div>;
   }
   
-  const uniqueId = `pannellum-viewer-${Math.random().toString(36).substr(2, 9)}`;
-
   return (
     <div className="relative w-full h-full group">
-       <div id={uniqueId} ref={viewerRef} style={{ width: '100%', height: '100%' }}></div>
+       <div id={viewerId} ref={viewerRef} style={{ width: '100%', height: '100%' }}></div>
       {images.length > 1 && (
         <>
           <Button
