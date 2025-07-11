@@ -1,16 +1,52 @@
 'use client';
 
-import { useState } from 'react';
-import { Pannellum } from 'pannellum-react';
+import 'pannellum';
+import { useRef, useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+
+declare global {
+    interface Window {
+        pannellum: {
+            viewer: (id: string, config: any) => any;
+        };
+    }
+}
 
 type PannellumViewerProps = {
   images: string[];
 };
 
 export function PannellumViewer({ images }: PannellumViewerProps) {
+  const viewerRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    if (viewerRef.current && images.length > 0 && typeof window.pannellum !== 'undefined') {
+      // Ensure the pannellum stylesheet is loaded
+      const linkId = 'pannellum-css';
+      if (!document.getElementById(linkId)) {
+        const link = document.createElement('link');
+        link.id = linkId;
+        link.rel = 'stylesheet';
+        link.href = '/pannellum.css';
+        document.head.appendChild(link);
+      }
+      
+      const viewer = window.pannellum.viewer(viewerRef.current.id, {
+        type: 'equirectangular',
+        panorama: images[currentIndex],
+        autoLoad: true,
+        showZoomCtrl: false,
+        showFullscreenCtrl: false,
+        mouseZoom: false,
+      });
+
+      return () => {
+        viewer.destroy();
+      };
+    }
+  }, [currentIndex, images]);
 
   const handleNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
@@ -25,23 +61,12 @@ export function PannellumViewer({ images }: PannellumViewerProps) {
   if (!images || images.length === 0) {
     return <div className="flex items-center justify-center h-full bg-muted">No images available for a 360° view.</div>;
   }
+  
+  const uniqueId = `pannellum-viewer-${Math.random().toString(36).substr(2, 9)}`;
 
   return (
     <div className="relative w-full h-full group">
-      <Pannellum
-        width="100%"
-        height="100%"
-        image={images[currentIndex]}
-        pitch={10}
-        yaw={180}
-        hfov={110}
-        autoLoad
-        showZoomCtrl={false}
-        showFullscreenCtrl={false}
-        mouseZoom={false}
-        orientationOnByDefault={false}
-      >
-      </Pannellum>
+       <div id={uniqueId} ref={viewerRef} style={{ width: '100%', height: '100%' }}></div>
       {images.length > 1 && (
         <>
           <Button
