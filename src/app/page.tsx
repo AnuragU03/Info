@@ -7,7 +7,11 @@ import { Search, Mic, ArrowRight } from "lucide-react";
 export default function Home() {
   return (
     <div className="flex flex-col items-center">
-      <section className="w-full py-20 md:py-32 bg-cover bg-center text-center" style={{backgroundImage: "url('https://placehold.co/1600x800.png')", backgroundBlendMode: 'multiply', backgroundColor: 'rgba(0,0,0,0.4)'}}>
+      <section 
+        className="w-full py-20 md:py-32 bg-cover bg-center text-center" 
+        style={{backgroundImage: "url('https://placehold.co/1600x800.png')", backgroundBlendMode: 'multiply', backgroundColor: 'rgba(0,0,0,0.4)'}}
+        data-ai-hint="Indian village"
+      >
         <div className="container mx-auto px-4 text-white">
           <h1 className="text-4xl md:text-6xl font-headline font-bold mb-4">Discover India's Soul</h1>
           <p className="text-lg md:text-xl max-w-3xl mx-auto mb-8">
