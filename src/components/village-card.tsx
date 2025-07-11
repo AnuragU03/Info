@@ -21,7 +21,7 @@ export function VillageCard({ village }: VillageCardProps) {
             width={600}
             height={400}
             className="object-cover w-full h-48 group-hover:scale-105 transition-transform duration-300"
-            data-ai-hint="village landscape"
+            data-ai-hint={`${village.location.split(',')[0].toLowerCase()} landscape`}
           />
           <Badge variant="secondary" className="absolute top-3 right-3">{village.location.split(',')[0]}</Badge>
         </div>

@@ -10,7 +10,7 @@ export default function Home() {
       <section 
         className="w-full py-20 md:py-32 bg-cover bg-center text-center" 
         style={{backgroundImage: "url('https://placehold.co/1600x800.png')", backgroundBlendMode: 'multiply', backgroundColor: 'rgba(0,0,0,0.4)'}}
-        data-ai-hint="Indian village"
+        data-ai-hint="Indian village sunset"
       >
         <div className="container mx-auto px-4 text-white">
           <h1 className="text-4xl md:text-6xl font-headline font-bold mb-4">Discover India's Soul</h1>
