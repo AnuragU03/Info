@@ -28,6 +28,12 @@ export function Header() {
             List Your Space
           </Link>
           <Link
+            href="/community"
+            className="transition-colors hover:text-primary"
+          >
+            Community
+          </Link>
+          <Link
             href="/about"
             className="transition-colors hover:text-primary"
           >

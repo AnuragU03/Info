@@ -5,6 +5,14 @@ export type Accommodation = {
   vrImages: string[];
 };
 
+export type CommunityPost = {
+  id: string;
+  author: string;
+  avatarUrl: string;
+  timestamp: string;
+  message: string;
+};
+
 export type Village = {
   id: string;
   name: string;
@@ -21,6 +29,7 @@ export type Village = {
   culturalAttractions: string;
   uniqueOfferings: string;
   accommodations: Accommodation[];
+  communityPosts: CommunityPost[];
 };
 
 export const villages: Village[] = [
@@ -63,6 +72,10 @@ export const villages: Village[] = [
           vrImages: ["https://placehold.co/4096x2048.png", "https://placehold.co/4096x2048.png"]
         },
     ],
+    communityPosts: [
+      { id: '1', author: 'Traveler_Tom', avatarUrl: 'https://placehold.co/100x100.png', timestamp: '2 hours ago', message: 'Just reached Mawali! Any tips for the best time to visit the root bridges to avoid the crowds?' },
+      { id: '2', author: 'Local_Guide_Lina', avatarUrl: 'https://placehold.co/100x100.png', timestamp: '1 hour ago', message: 'Welcome! Early morning, around 7 AM, is perfect. The light is magical and it’s very peaceful.' },
+    ]
   },
   {
     id: "nako",
@@ -103,6 +116,9 @@ export const villages: Village[] = [
           vrImages: ["https://placehold.co/4096x2048.png"]
         },
     ],
+    communityPosts: [
+        { id: '1', author: 'Hiker_Helen', avatarUrl: 'https://placehold.co/100x100.png', timestamp: 'Yesterday', message: 'The trek to the monastery was tough but so rewarding. The views are out of this world! Make sure to carry water.' },
+    ]
   },
   {
     id: "zardari",
@@ -143,6 +159,10 @@ export const villages: Village[] = [
           vrImages: ["https://placehold.co/4096x2048.png"]
         },
     ],
+    communityPosts: [
+        { id: '1', author: 'Artsy_Anna', avatarUrl: 'https://placehold.co/100x100.png', timestamp: '3 days ago', message: 'I attended a block-printing workshop here and it was amazing! The local artisans are so talented.' },
+        { id: '2', author: 'Desert_Dan', avatarUrl: 'https://placehold.co/100x100.png', timestamp: '1 day ago', message: 'The evening cultural show at Mirage Camp was the highlight of my trip. Highly recommended!' },
+    ]
   },
   {
     id: "araku",
@@ -183,6 +203,7 @@ export const villages: Village[] = [
           vrImages: ["https://placehold.co/4096x2048.png"]
         },
     ],
+    communityPosts: []
   },
 ];
 
