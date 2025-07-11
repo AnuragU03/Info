@@ -1,6 +1,5 @@
 'use client';
 
-import 'pannellum';
 import { useRef, useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
