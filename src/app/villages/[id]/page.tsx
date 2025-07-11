@@ -7,6 +7,8 @@ import { BookingCard } from "@/components/booking-card";
 import { NearbyAttractions } from "@/components/nearby-attractions";
 import { InstagramSummary } from "@/components/instagram-summary";
 import { PannellumViewer } from "@/components/pannellum-viewer";
+import { AccommodationsList } from "@/components/accommodations-list";
+import { Separator } from "@/components/ui/separator";
 
 type VillagePageProps = {
   params: {
@@ -34,8 +36,8 @@ export default function VillagePage({ params }: VillagePageProps) {
       </div>
 
       <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">
-        <div className="lg:col-span-2">
-          <div className="mb-8">
+        <div className="lg:col-span-2 space-y-8">
+          <div>
             <h2 className="text-2xl font-headline font-semibold mb-4 flex items-center gap-2">
                 <Eye className="h-6 w-6 text-primary" />
                 360° Interactive View
@@ -45,9 +47,11 @@ export default function VillagePage({ params }: VillagePageProps) {
             </div>
           </div>
 
-          <div className="prose prose-lg max-w-none text-foreground/90 mb-8">
+          <div className="prose prose-lg max-w-none text-foreground/90">
             <p>{village.longDescription}</p>
           </div>
+
+          <Separator />
 
           <div className="grid md:grid-cols-2 gap-8">
              <div className="space-y-4">
@@ -59,6 +63,11 @@ export default function VillagePage({ params }: VillagePageProps) {
                 <p className="text-foreground/80">{village.uniqueOfferings}</p>
             </div>
           </div>
+          
+          <Separator />
+          
+          <AccommodationsList accommodations={village.accommodations} />
+
         </div>
 
         <div className="lg:col-span-1 space-y-8">
