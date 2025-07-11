@@ -2,6 +2,7 @@
 
 import { suggestNearbyAttractions } from '@/ai/flows/suggest-nearby-attractions';
 import { summarizeInstagramPosts } from '@/ai/flows/summarize-instagram-posts';
+import { identifyLocationFromImage } from '@/ai/flows/identify-location-from-image';
 
 export async function getNearbyAttractions(villageName: string, latitude: number, longitude: number) {
   try {
@@ -25,4 +26,17 @@ export async function getInstagramSummary(villageName: string, instagramPosts: s
     console.error('Error summarizing Instagram posts:', error);
     return 'Could not generate social media summary at this time.';
   }
+}
+
+export async function getLocationFromImage(imageUrl: string) {
+    if (!imageUrl) {
+        return null;
+    }
+    try {
+        const result = await identifyLocationFromImage({ imageUrl });
+        return result;
+    } catch (error) {
+        console.error('Error identifying location from image:', error);
+        return null;
+    }
 }

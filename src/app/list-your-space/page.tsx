@@ -17,12 +17,15 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
-import { QrCode, Upload, Leaf } from 'lucide-react';
+import { QrCode, Upload, Leaf, ScanSearch, Loader2 } from 'lucide-react';
+import { useState } from 'react';
+import { getLocationFromImage } from '../actions';
 
 const formSchema = z.object({
   villageName: z.string().min(2, {
     message: 'Village name must be at least 2 characters.',
   }),
+  imageUrl: z.string().url({ message: 'Please enter a valid image URL.' }).optional().or(z.literal('')),
   description: z.string().min(20, {
     message: 'Description must be at least 20 characters.',
   }),
@@ -48,17 +51,53 @@ const ecoBadges = [
 
 export default function ListYourSpacePage() {
   const { toast } = useToast();
+  const [isScanning, setIsScanning] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       villageName: '',
+      imageUrl: '',
       description: '',
       culturalAttractions: '',
       uniqueOfferings: '',
       ecoBadges: [],
     },
   });
+
+  const handleAutofill = async () => {
+    const imageUrl = form.getValues('imageUrl');
+    if (!imageUrl) {
+      form.setError('imageUrl', { type: 'manual', message: 'Please provide an image URL to analyze.' });
+      return;
+    }
+    setIsScanning(true);
+    try {
+      const location = await getLocationFromImage(imageUrl);
+      if (location?.villageName) {
+        form.setValue('villageName', location.villageName);
+        toast({
+          title: 'Location Identified!',
+          description: `We've pre-filled the village name as ${location.villageName}.`,
+        });
+      } else {
+        toast({
+          variant: 'destructive',
+          title: 'Could not identify location',
+          description: 'We were unable to identify a location from the provided image.',
+        });
+      }
+    } catch (error) {
+      toast({
+        variant: 'destructive',
+        title: 'An error occurred',
+        description: 'Something went wrong while analyzing the image.',
+      });
+    } finally {
+      setIsScanning(false);
+    }
+  };
+
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
@@ -83,6 +122,32 @@ export default function ListYourSpacePage() {
 
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+            <FormField
+              control={form.control}
+              name="imageUrl"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-lg">Autofill from Image</FormLabel>
+                   <FormDescription>
+                      Paste an image URL (e.g., from a social media post) and we'll try to identify the location.
+                    </FormDescription>
+                  <FormControl>
+                    <div className="flex items-center gap-2">
+                      <Input placeholder="https://instagram.com/p/..." {...field} />
+                      <Button type="button" onClick={handleAutofill} disabled={isScanning}>
+                        {isScanning ? (
+                          <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        ) : (
+                           <ScanSearch className="mr-2 h-4 w-4" />
+                        )}
+                        Analyze
+                      </Button>
+                    </div>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
             <FormField
               control={form.control}
               name="villageName"
