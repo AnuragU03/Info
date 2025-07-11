@@ -2,6 +2,7 @@ export type Accommodation = {
   name: string;
   type: 'Homestay' | 'Hotel';
   description: string;
+  vrImages: string[];
 };
 
 export type Village = {
@@ -44,9 +45,24 @@ export const villages: Village[] = [
     culturalAttractions: "Living root bridges, traditional Khasi tribal homes, local folklore storytelling sessions.",
     uniqueOfferings: "Guided treks through the forest, bamboo craft workshops, authentic Khasi cuisine.",
     accommodations: [
-        { name: "Serene Homestay", type: "Homestay", description: "A cozy stay with a local family, offering authentic Khasi meals." },
-        { name: "Root Bridge View Resort", type: "Hotel", description: "A comfortable hotel with stunning views of the surrounding forests." },
-        { name: "Jungle Vibe Homestay", type: "Homestay", description: "Experience the jungle up close in this rustic and charming homestay." },
+        { 
+          name: "Serene Homestay", 
+          type: "Homestay", 
+          description: "A cozy stay with a local family, offering authentic Khasi meals.",
+          vrImages: ["https://placehold.co/1200x800.png", "https://placehold.co/1200x800.png"]
+        },
+        { 
+          name: "Root Bridge View Resort", 
+          type: "Hotel", 
+          description: "A comfortable hotel with stunning views of the surrounding forests.",
+          vrImages: ["https://placehold.co/1200x800.png"]
+        },
+        { 
+          name: "Jungle Vibe Homestay", 
+          type: "Homestay", 
+          description: "Experience the jungle up close in this rustic and charming homestay.",
+          vrImages: ["https://placehold.co/1200x800.png", "https://placehold.co/1200x800.png"]
+        },
     ],
   },
   {
@@ -70,9 +86,24 @@ export const villages: Village[] = [
     culturalAttractions: "Nako Monastery complex, Nako Lake, traditional mud-brick houses.",
     uniqueOfferings: "High-altitude trekking, meditation retreats, local apple and apricot orchards.",
     accommodations: [
-        { name: "Lake View Hotel", type: "Hotel", description: "Wake up to mesmerizing views of Nako Lake and the Himalayas." },
-        { name: "Himalayan Homestay", type: "Homestay", description: "Experience the warm hospitality of a local Spitian family." },
-        { name: "Nako Retreat", type: "Hotel", description: "A peaceful retreat offering comfortable rooms and guided tours." },
+        { 
+          name: "Lake View Hotel", 
+          type: "Hotel", 
+          description: "Wake up to mesmerizing views of Nako Lake and the Himalayas.",
+          vrImages: ["https://placehold.co/1200x800.png"]
+        },
+        { 
+          name: "Himalayan Homestay", 
+          type: "Homestay", 
+          description: "Experience the warm hospitality of a local Spitian family.",
+          vrImages: ["https://placehold.co/1200x800.png", "https://placehold.co/1200x800.png"]
+        },
+        { 
+          name: "Nako Retreat", 
+          type: "Hotel", 
+          description: "A peaceful retreat offering comfortable rooms and guided tours.",
+          vrImages: ["https://placehold.co/1200x800.png"]
+        },
     ],
   },
   {
@@ -96,9 +127,24 @@ export const villages: Village[] = [
     culturalAttractions: "Kalbelia dance performances, Mandana paintings on mud walls, local artisan workshops.",
     uniqueOfferings: "Camel safaris, block-printing workshops, desert camping experiences.",
     accommodations: [
-        { name: "Desert Rose Homestay", type: "Homestay", description: "Live like a local in a beautifully decorated traditional home." },
-        { name: "The Royal Haveli", type: "Hotel", description: "A heritage hotel offering a glimpse into Rajasthan's royal past." },
-        { name: "Mirage Camp", type: "Hotel", description: "Luxury tents in the desert with cultural programs every evening." },
+        { 
+          name: "Desert Rose Homestay", 
+          type: "Homestay", 
+          description: "Live like a local in a beautifully decorated traditional home.",
+          vrImages: ["https://placehold.co/1200x800.png", "https://placehold.co/1200x800.png"]
+        },
+        { 
+          name: "The Royal Haveli", 
+          type: "Hotel", 
+          description: "A heritage hotel offering a glimpse into Rajasthan's royal past.",
+          vrImages: ["https://placehold.co/1200x800.png"]
+        },
+        { 
+          name: "Mirage Camp", 
+          type: "Hotel", 
+          description: "Luxury tents in the desert with cultural programs every evening.",
+          vrImages: ["https://placehold.co/1200x800.png"]
+        },
     ],
   },
   {
@@ -122,9 +168,24 @@ export const villages: Village[] = [
     culturalAttractions: "Tribal Museum, Padmapuram Gardens, traditional Dhimsa dance.",
     uniqueOfferings: "Coffee plantation tours, trekking to waterfalls, exploring Borra Caves.",
     accommodations: [
-        { name: "Coffee County Homestay", type: "Homestay", description: "Stay amidst a coffee plantation and learn about coffee making." },
-        { name: "Valley View Resort", type: "Hotel", description: "A resort offering panoramic views of the entire Araku Valley." },
-        { name: "Tribal Traditions", type: "Homestay", description: "An authentic stay with a local tribal family to learn their way of life." },
+        { 
+          name: "Coffee County Homestay", 
+          type: "Homestay", 
+          description: "Stay amidst a coffee plantation and learn about coffee making.",
+          vrImages: ["https://placehold.co/1200x800.png", "https://placehold.co/1200x800.png"]
+        },
+        { 
+          name: "Valley View Resort", 
+          type: "Hotel", 
+          description: "A resort offering panoramic views of the entire Araku Valley.",
+          vrImages: ["https://placehold.co/1200x800.png"]
+        },
+        { 
+          name: "Tribal Traditions", 
+          type: "Homestay", 
+          description: "An authentic stay with a local tribal family to learn their way of life.",
+          vrImages: ["https://placehold.co/1200x800.png"]
+        },
     ],
   },
 ];
