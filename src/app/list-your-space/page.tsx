@@ -95,7 +95,6 @@ export default function ListYourSpacePage() {
       culturalAttractions: '',
       uniqueOfferings: '',
       ecoBadges: [],
-      images: null,
     },
   });
 
@@ -329,18 +328,14 @@ export default function ListYourSpacePage() {
                 </FormItem>
               )}
             />
-            <FormField
-              control={form.control}
-              name="images"
-              render={({ field }) => (
-                <FormItem>
+             <FormItem>
                   <FormLabel className="text-lg">Upload Images</FormLabel>
                    <FormDescription>
                       Showcase the beauty of your space.
                     </FormDescription>
                   <FormControl>
                     <div className="relative">
-                      <Input type="file" className="opacity-0 absolute inset-0 w-full h-full z-10" {...field} />
+                      <Input type="file" className="opacity-0 absolute inset-0 w-full h-full z-10" {...form.register('images')} />
                       <Button variant="outline" type="button" className="w-full h-12">
                         <Upload className="mr-2 h-4 w-4" />
                         Choose files to upload
@@ -349,8 +344,6 @@ export default function ListYourSpacePage() {
                   </FormControl>
                   <FormMessage />
                 </FormItem>
-              )}
-            />
 
             <div className="flex flex-col md:flex-row gap-4">
               <Button type="button" variant="secondary" className="w-full">
