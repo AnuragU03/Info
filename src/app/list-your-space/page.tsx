@@ -20,7 +20,6 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
 import { QrCode, Upload, Leaf, ScanSearch, Loader2, Sparkles, ChevronDown, BadgePercent, Tag, CircleDollarSign } from 'lucide-react';
 import { useState } from 'react';
-import QRCode from 'qrcode';
 import { getLocationFromImage, getSuggestedPrice } from '../actions';
 import type { SuggestPriceOutput } from '@/ai/flows/suggest-price';
 import {
@@ -181,6 +180,7 @@ export default function ListYourSpacePage() {
     });
 
     try {
+      const QRCode = await import('qrcode');
       const url = await QRCode.toDataURL(qrData);
       setQrCodeUrl(url);
     } catch (err) {
