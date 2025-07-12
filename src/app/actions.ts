@@ -8,8 +8,8 @@ import { generateItinerary } from '@/ai/flows/generate-itinerary';
 import { suggestPrice } from '@/ai/flows/suggest-price';
 import { translateText } from '@/ai/flows/translate-text';
 import type { GenerateItineraryInput } from '@/ai/flows/generate-itinerary';
-import type { SuggestPriceInput, SuggestPriceOutput } from '@/ai/flows/suggest-price';
-import { addPostToVillage as addPostToVillageData, type CommunityPost, addApplication as addApplicationData } from '@/lib/mock-data';
+import type { SuggestPriceOutput } from '@/ai/flows/suggest-price';
+import { addPostToVillage, type CommunityPost, addApplication as addApplicationData } from '@/lib/mock-data';
 import { revalidatePath } from 'next/cache';
 
 
@@ -60,7 +60,7 @@ export async function getItinerary(input: GenerateItineraryInput) {
     }
 }
 
-export async function getSuggestedPrice(input: SuggestPriceInput): Promise<SuggestPriceOutput | null> {
+export async function getSuggestedPrice(input: Omit<import("@/ai/flows/suggest-price").SuggestPriceInput, "images">): Promise<SuggestPriceOutput | null> {
     try {
         const result = await suggestPrice(input);
         return result;
@@ -70,22 +70,22 @@ export async function getSuggestedPrice(input: SuggestPriceInput): Promise<Sugge
     }
 }
 
-export async function getTranslation(text: string, targetLanguage: string) {
-  if (!text || !targetLanguage || targetLanguage === 'en') {
-    return text;
-  }
-  try {
-    const result = await translateText({ text, targetLanguage });
-    return result.translatedText;
-  } catch (error) {
-    console.error(`Error translating text to ${targetLanguage}:`, error);
-    return text; // Return original text on error
-  }
+export async function getTranslation(text: string, lang: string): Promise<string | null> {
+    if (!text || !lang || lang === 'en') {
+      return text;
+    }
+    try {
+      const result = await translateText({ text, targetLanguage: lang });
+      return result.translatedText;
+    } catch (error) {
+      console.error(`Error translating text to ${lang}:`, error);
+      return text;
+    }
 }
 
 export async function addCommunityPost(villageId: string, postData: Omit<CommunityPost, 'id' | 'timestamp'>) {
     try {
-        addPostToVillageData(villageId, postData);
+        addPostToVillage(villageId, postData);
         revalidatePath(`/community/${villageId}`);
         return { success: true };
     } catch (error) {
