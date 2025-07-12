@@ -7,9 +7,21 @@ export type Internship = {
   category: 'Internship' | 'Volunteering';
   duration: string;
   description: string;
+  longDescription: string;
+  responsibilities: string[];
   benefits: string[];
   imageUrl: string;
   sdgs: number[];
+};
+
+export type Application = {
+    id: string;
+    opportunityId: string;
+    opportunityTitle: string;
+    villageName: string;
+    userId: string; // In a real app, this would be the user's ID
+    userName: string;
+    status: 'Applied' | 'Under Review' | 'Accepted' | 'Rejected';
 };
 
 export type Accommodation = {
@@ -237,8 +249,15 @@ export const internships: Internship[] = [
     villageName: "Mawali, Meghalaya",
     category: "Internship",
     duration: "4 Weeks",
-    description: "Learn traditional and sustainable Khasi farming techniques. Work alongside local farmers to cultivate turmeric, ginger, and other organic produce. Gain hands-on experience in permaculture principles.",
-    benefits: ["Experience Certificate", "University Credits Possible", "Stay with a local family"],
+    description: "Learn traditional and sustainable Khasi farming techniques. Work alongside local farmers to cultivate turmeric, ginger, and other organic produce.",
+    longDescription: "Dive deep into the world of sustainable agriculture with this hands-on internship. You will be paired with an experienced local farmer in Mawali who will mentor you in the art of organic farming as practiced by the Khasi people for generations. This is more than just farming; it's about understanding the ecosystem and living in harmony with it.",
+    responsibilities: [
+        "Assist in day-to-day farm activities like planting, weeding, and harvesting.",
+        "Learn about natural pest control methods and companion planting.",
+        "Help in composting and creating organic fertilizers.",
+        "Document farming techniques through photos and notes."
+    ],
+    benefits: ["Experience Certificate", "University Credits Possible", "Stay and meals with a local family"],
     imageUrl: "https://placehold.co/600x400.png",
     sdgs: [4, 12]
   },
@@ -249,7 +268,14 @@ export const internships: Internship[] = [
     villageName: "Hampi, Karnataka",
     category: "Volunteering",
     duration: "1 Week",
-    description: "Be a part of the vibrant Hampi Utsav, the annual cultural festival. Help with event management, artist coordination, and guest services. A unique opportunity to experience the culture from behind the scenes.",
+    description: "Be a part of the vibrant Hampi Utsav, the annual cultural festival. Help with event management, artist coordination, and guest services.",
+    longDescription: "Experience the magnificent Hampi Utsav from the inside! As a volunteer, you will be an essential part of the team that brings this grand celebration of music, dance, and culture to life. This is a fast-paced, exciting opportunity for those who love culture and event management.",
+    responsibilities: [
+        "Assisting with stage setup and artist logistics.",
+        "Managing information desks for tourists.",
+        "Helping coordinate cultural workshops and competitions.",
+        "Supporting the social media team with live updates."
+    ],
     benefits: ["Certificate of Participation", "Free access to all festival events", "Meet local artists and performers"],
     imageUrl: "https://placehold.co/600x400.png",
     sdgs: [4, 11]
@@ -261,7 +287,14 @@ export const internships: Internship[] = [
     villageName: "Nako, Himachal Pradesh",
     category: "Internship",
     duration: "6 Weeks",
-    description: "For architecture and civil engineering students. Study and document the traditional mud-brick building techniques of Nako. Create architectural drawings and video documentation to help preserve this heritage.",
+    description: "For architecture and civil engineering students. Study and document the traditional mud-brick building techniques of Nako.",
+    longDescription: "This is a unique research opportunity for students passionate about vernacular and sustainable architecture. You will be tasked with the important work of studying, sketching, and documenting the centuries-old construction methods used in Nako. Your work will contribute to a digital archive aimed at preserving this invaluable architectural heritage.",
+    responsibilities: [
+        "Create detailed architectural drawings (plans, sections, elevations) of traditional houses.",
+        "Interview local elders and artisans about building materials and techniques.",
+        "Conduct photographic and videographic documentation.",
+        "Prepare a final report summarizing your findings."
+    ],
     benefits: ["Project Credit for Thesis/Portfolio", "Work with local artisans", "Experience high-altitude living"],
     imageUrl: "https://placehold.co/600x400.png",
     sdgs: [4, 9, 11]
@@ -273,7 +306,14 @@ export const internships: Internship[] = [
     villageName: "Araku Valley, Andhra Pradesh",
     category: "Volunteering",
     duration: "3 Weeks",
-    description: "Help document the folklore, traditions, and daily life of the tribal communities in Araku. Conduct interviews, shoot videos, and create content that the village can use for its own digital presence.",
+    description: "Help document the folklore, traditions, and daily life of the tribal communities in Araku. Create content for the village's digital presence.",
+    longDescription: "Use your media skills to empower a community. This project invites you to connect with the local tribes of Araku Valley, listen to their stories, and help them share their unique culture with the world. You'll create a repository of digital content that the community can use for tourism promotion and cultural preservation.",
+    responsibilities: [
+        "Conduct and record interviews with community members (with a translator).",
+        "Shoot and edit short video documentaries on local crafts, music, or daily life.",
+        "Take high-quality photographs for a community-owned digital archive.",
+        "Write blog posts or articles about your experiences."
+    ],
     benefits: ["Learn documentary filmmaking", "Contribute to cultural preservation", "Immersive cultural experience"],
     imageUrl: "https://placehold.co/600x400.png",
     sdgs: [4, 10]
@@ -288,8 +328,18 @@ let bookings: Booking[] = [
     { id: 'BK005', villageName: 'Araku Valley', guestName: 'Ethan Hunt', checkIn: '2024-09-20', checkOut: '2024-09-25', status: 'Cancelled', ownerId: 'owner4' },
 ];
 
+let applications: Application[] = [
+    { id: 'APP001', opportunityId: 'intern-mawali-farming', opportunityTitle: 'Organic Farming Internship', villageName: 'Mawali', userId: 'owner1', userName: 'Diana Prince', status: 'Under Review' },
+    { id: 'APP002', opportunityId: 'volunteer-hampi-festival', opportunityTitle: 'Hampi Utsav Volunteer', villageName: 'Hampi', userId: 'admin1', userName: 'Charlie Brown', status: 'Accepted' },
+];
+
+
 export const getVillageById = (id: string): Village | undefined => {
   return villages.find((v) => v.id === id);
+};
+
+export const getInternshipById = (id: string): Internship | undefined => {
+    return internships.find((i) => i.id === id);
 };
 
 export const addPostToVillage = (villageId: string, post: Omit<CommunityPost, 'id' | 'timestamp'>) => {
@@ -311,3 +361,36 @@ export const getAllBookings = (): Booking[] => {
 export const getBookingsByOwner = (ownerId: string): Booking[] => {
     return bookings.filter(b => b.ownerId === ownerId);
 };
+
+export const getAllApplications = (): Application[] => {
+    return applications;
+}
+
+export const getApplicationsByUser = (userId: string): Application[] => {
+    return applications.filter(a => a.userId === userId);
+}
+
+export const addApplication = (opportunityId: string, userId: string): Application | { error: string } => {
+    const opportunity = getInternshipById(opportunityId);
+    if (!opportunity) {
+        return { error: "Opportunity not found." };
+    }
+    // In a real app, we'd get the user's name from their profile
+    const userName = userId === 'admin' ? 'Admin User' : 'Owner User';
+
+    if (applications.some(a => a.opportunityId === opportunityId && a.userId === userId)) {
+        return { error: "You have already applied for this opportunity." };
+    }
+
+    const newApplication: Application = {
+        id: `APP${Date.now()}`,
+        opportunityId: opportunity.id,
+        opportunityTitle: opportunity.title,
+        villageName: opportunity.villageName,
+        userId: userId,
+        userName: userName,
+        status: 'Applied'
+    };
+    applications.push(newApplication);
+    return newApplication;
+}

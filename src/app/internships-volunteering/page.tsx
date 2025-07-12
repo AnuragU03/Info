@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter }
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { MapPin, Clock, Award, BookOpen, HandHeart, Sparkles } from 'lucide-react';
+import Link from 'next/link';
 
 export default function InternshipsPage() {
   const categoryIcons = {
@@ -86,9 +87,11 @@ export default function InternshipsPage() {
                     ))}
                     </div>
                 </div>
-                <Button className="w-full">
-                    <Sparkles className="mr-2 h-4 w-4" />
-                    Learn More & Apply
+                <Button asChild className="w-full">
+                    <Link href={`/internships-volunteering/${opportunity.id}`}>
+                        <Sparkles className="mr-2 h-4 w-4" />
+                        Learn More & Apply
+                    </Link>
                 </Button>
               </CardFooter>
             </Card>

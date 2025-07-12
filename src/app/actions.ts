@@ -9,7 +9,7 @@ import { suggestPrice } from '@/ai/flows/suggest-price';
 import { translateText } from '@/ai/flows/translate-text';
 import type { GenerateItineraryInput } from '@/ai/flows/generate-itinerary';
 import type { SuggestPriceInput, SuggestPriceOutput } from '@/ai/flows/suggest-price';
-import { addPostToVillage as addPostToVillageData, type CommunityPost } from '@/lib/mock-data';
+import { addPostToVillage as addPostToVillageData, type CommunityPost, addApplication as addApplicationData } from '@/lib/mock-data';
 import { revalidatePath } from 'next/cache';
 
 
@@ -88,5 +88,20 @@ export async function addCommunityPost(villageId: string, postData: Omit<Communi
     } catch (error) {
         console.error('Error adding community post:', error);
         return { success: false, error: 'Could not post message.' };
+    }
+}
+
+export async function applyForOpportunity(opportunityId: string, userId: string) {
+    try {
+        const result = addApplicationData(opportunityId, userId);
+        if ('error' in result) {
+            return { success: false, error: result.error };
+        }
+        revalidatePath('/admin/dashboard');
+        revalidatePath('/owner/dashboard');
+        return { success: true, applicationId: result.id };
+    } catch (error) {
+        console.error('Error applying for opportunity:', error);
+        return { success: false, error: 'An unexpected error occurred.' };
     }
 }
