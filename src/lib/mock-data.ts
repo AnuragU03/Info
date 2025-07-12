@@ -75,7 +75,6 @@ export type KiranaStore = {
   name: string;
   villageName: string;
   description: string;
-  imageUrl: string;
 };
 
 export const villages: Village[] = [
@@ -334,28 +333,24 @@ export const kiranaStores: KiranaStore[] = [
         name: "Shankar Kirana Store",
         villageName: "Mawali",
         description: "Your one-stop shop for daily essentials, local spices, and fresh produce. Proudly accepting VillageCoins.",
-        imageUrl: "https://placehold.co/600x400.png"
     },
     {
         id: "kirana-nako-1",
         name: "Himalayan General Store",
         villageName: "Nako",
         description: "Stock up on supplies, trekking snacks, and local apricots. We support the VillageCoins initiative!",
-        imageUrl: "https://placehold.co/600x400.png"
     },
     {
         id: "kirana-hampi-1",
         name: "Tungabhadra Traders",
         villageName: "Hampi",
         description: "Find everything from cold drinks to souvenirs. Pay with VillageCoins and support local economy.",
-        imageUrl: "https://placehold.co/600x400.png"
     },
     {
         id: "kirana-araku-1",
         name: "Valley Organics",
         villageName: "Araku Valley",
         description: "Specializing in organic coffee, local honey, and tribal handicrafts. VillageCoins welcome here.",
-        imageUrl: "https://placehold.co/600x400.png"
     }
 ];
 
