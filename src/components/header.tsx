@@ -13,6 +13,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useRouter } from 'next/navigation';
+import { ThemeToggle } from "./theme-toggle";
 
 const languages = [
   { code: 'en', name: 'English' },
@@ -108,6 +109,8 @@ export function Header() {
             </DropdownMenuContent>
           </DropdownMenu>
 
+          <ThemeToggle />
+
           {isAuthenticated ? (
             <>
                <Button asChild variant="ghost">
@@ -137,5 +140,3 @@ export function Header() {
     </header>
   );
 }
-
-    
