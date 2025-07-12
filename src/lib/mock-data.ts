@@ -85,7 +85,7 @@ export const villages: Village[] = [
     location: "Meghalaya, India",
     shortDescription: "A serene village known for its living root bridges and lush greenery.",
     longDescription: "Nestled in the East Khasi Hills of Meghalaya, Mawali is a picturesque village that offers a unique blend of natural beauty and cultural heritage. It is famed for its incredible living root bridges, handcrafted by the local Khasi tribes over generations. The village is surrounded by dense tropical forests, sparkling waterfalls, and a tranquil atmosphere, making it a perfect escape for nature lovers and those seeking peace.",
-    mainImage: "https://placehold.co/600x400.png",
+    mainImage: "https://i.ibb.co/M9d5dYg/mawali-trek.jpg",
     vrImages: [
       "https://i.imgur.com/BAnb5y7.jpg",
     ],
