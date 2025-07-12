@@ -85,7 +85,7 @@ export const villages: Village[] = [
     location: "Meghalaya, India",
     shortDescription: "A serene village known for its living root bridges and lush greenery.",
     longDescription: "Nestled in the East Khasi Hills of Meghalaya, Mawali is a picturesque village that offers a unique blend of natural beauty and cultural heritage. It is famed for its incredible living root bridges, handcrafted by the local Khasi tribes over generations. The village is surrounded by dense tropical forests, sparkling waterfalls, and a tranquil atmosphere, making it a perfect escape for nature lovers and those seeking peace.",
-    mainImage: "https://i.ibb.co/M9d5dYg/mawali-trek.jpg",
+    mainImage: "https://i.ibb.co/6JtXfRtF/Mawlynnong.jpg",
     vrImages: [
       "https://i.ibb.co/6JtXfRtF/Mawlynnong.jpg",
     ],
@@ -128,7 +128,7 @@ export const villages: Village[] = [
     location: "Himachal Pradesh, India",
     shortDescription: "A high-altitude village with a stunning lake and ancient monasteries.",
     longDescription: "Perched at an elevation of 3,662 meters in the starkly beautiful Spiti Valley, Nako is a village that seems frozen in time. Its centerpiece is the sacred Nako Lake, surrounded by willow and poplar trees. The village is also home to several ancient Buddhist monasteries, adorned with intricate murals and scriptures. The air is thin, the views are panoramic, and the sense of spirituality is profound.",
-    mainImage: "https://placehold.co/600x400.png",
+    mainImage: "https://i.ibb.co/GfZNpfVt/Nako.jpg",
     vrImages: [
       "https://i.ibb.co/GfZNpfVt/Nako.jpg",
     ],
@@ -170,7 +170,7 @@ export const villages: Village[] = [
     location: "Karnataka, India",
     shortDescription: "An ancient village of ruins, a UNESCO World Heritage Site.",
     longDescription: "Hampi, a UNESCO World Heritage Site in Karnataka, is a captivating landscape of ancient ruins, giant boulders, and Dravidian temples. Once the capital of the Vijayanagara Empire, its vast, open-air museum is dotted with magnificent temples, palace remains, and riverside ruins that transport you back in time. It's a dream destination for history buffs, rock climbers, and spiritual seekers.",
-    mainImage: "https://i.ibb.co/6y1vCjD/hampi-stone-chariot.jpg",
+    mainImage: "https://i.ibb.co/spvk9rRY/hampi.jpg",
     vrImages: [
       "https://i.ibb.co/spvk9rRY/hampi.jpg",
     ],
@@ -213,7 +213,7 @@ export const villages: Village[] = [
     location: "Andhra Pradesh, India",
     shortDescription: "Lush coffee plantations and tribal culture in the Eastern Ghats.",
     longDescription: "Araku Valley is a verdant paradise nestled in the Eastern Ghats. Famous for its aromatic coffee plantations, the valley is also home to several indigenous tribal communities. The journey to Araku by train, through tunnels and over bridges, is an adventure in itself. Visitors can explore tribal museums, trek to stunning waterfalls like Katiki, and savor the unique flavor of locally grown organic coffee.",
-    mainImage: "https://i.ibb.co/jZ8TqzG/arakuvalley.jpg",
+    mainImage: "https://i.ibb.co/0jndZX39/arakuvalley.jpg",
     vrImages: [
       "https://i.ibb.co/0jndZX39/arakuvalley.jpg"
     ],
