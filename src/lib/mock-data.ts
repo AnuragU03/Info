@@ -186,8 +186,7 @@ export const villages: Village[] = [
     longDescription: "Araku Valley is a verdant paradise nestled in the Eastern Ghats. Famous for its aromatic coffee plantations, the valley is also home to several indigenous tribal communities. The journey to Araku by train, through tunnels and over bridges, is an adventure in itself. Visitors can explore tribal museums, trek to stunning waterfalls like Katiki, and savor the unique flavor of locally grown organic coffee.",
     mainImage: "https://placehold.co/600x400.png",
     vrImages: [
-      "https://placehold.co/4096x2048.png",
-      "https://placehold.co/4096x2048.png",
+      "https://i.ibb.co/208TqzG3/arakuvalley.jpg",
     ],
     coordinates: { latitude: 18.3333, longitude: 82.8667 },
     instagramPosts: [
