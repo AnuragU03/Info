@@ -18,7 +18,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
-import { QrCode, Upload, Leaf, ScanSearch, Loader2, Sparkles, ChevronDown, BadgePercent, Tag } from 'lucide-react';
+import { QrCode, Upload, Leaf, ScanSearch, Loader2, Sparkles, ChevronDown, BadgePercent, Tag, CircleDollarSign } from 'lucide-react';
 import { useState } from 'react';
 import { getLocationFromImage, getSuggestedPrice } from '../actions';
 import type { SuggestPriceOutput } from '@/ai/flows/suggest-price';
@@ -152,7 +152,7 @@ export default function ListYourSpacePage() {
     setPriceSuggestion(null);
     toast({
       title: 'Listing Submitted!',
-      description: 'Your space has been submitted for review. Thank you!',
+      description: 'Your space has been submitted for review. You have earned 50 VillageCoins for your contribution!',
     });
     form.reset();
   }
@@ -286,7 +286,7 @@ export default function ListYourSpacePage() {
                   <div className="mb-4">
                     <FormLabel className="text-lg">Eco-Badges</FormLabel>
                     <FormDescription>
-                      Select the sustainability practices you follow.
+                      Select the sustainability practices you follow. Each badge earns you VillageCoins!
                     </FormDescription>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -331,7 +331,7 @@ export default function ListYourSpacePage() {
              <FormItem>
                   <FormLabel className="text-lg">Upload Images</FormLabel>
                    <FormDescription>
-                      Showcase the beauty of your space.
+                      Showcase the beauty of your space. Upload a picture of your eco-practices for verification and to earn extra VillageCoins.
                     </FormDescription>
                   <FormControl>
                     <div className="relative">
@@ -387,6 +387,12 @@ export default function ListYourSpacePage() {
                     <h4 className="font-semibold mb-2">Justification:</h4>
                     {priceSuggestion?.justification && <MarkdownRenderer content={priceSuggestion.justification} />}
                 </div>
+                 <div className="text-center border-t pt-4">
+                    <p className="text-sm text-muted-foreground flex items-center justify-center gap-2">
+                        <CircleDollarSign className="h-5 w-5 text-accent"/>
+                        You'll also earn <span className="font-bold text-accent">50 VillageCoins</span> for this listing!
+                    </p>
+                </div>
             </div>
             <DialogFooter className="sm:justify-between flex-col sm:flex-row gap-2">
                 <Button type="button" variant="outline" onClick={() => setPriceSuggestion(null)}>
@@ -402,3 +408,5 @@ export default function ListYourSpacePage() {
     </>
   );
 }
+
+    

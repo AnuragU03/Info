@@ -2,7 +2,7 @@
 "use client";
 
 import Link from "next/link";
-import { Sprout, Globe, LayoutDashboard, LogOut } from "lucide-react";
+import { Sprout, Globe, LayoutDashboard, LogOut, CircleDollarSign } from "lucide-react";
 import { Button } from "./ui/button";
 import { useTranslation } from "@/hooks/use-translation";
 import { useAuth } from "@/context/auth-context";
@@ -67,6 +67,12 @@ export function Header() {
           >
             {t('Discover from Image')}
           </Link>
+           <Link
+            href="/redeem-coins"
+            className="transition-colors hover:text-primary"
+          >
+            {t('Redeem Coins')}
+          </Link>
           <Link
             href="/community"
             className="transition-colors hover:text-primary"
@@ -130,3 +136,5 @@ export function Header() {
     </header>
   );
 }
+
+    

@@ -61,13 +61,21 @@ export type Village = {
 };
 
 export type Booking = {
-    id: string;
+    id:string;
     villageName: string;
     guestName: string;
     checkIn: string;
     checkOut: string;
     status: 'Confirmed' | 'Pending' | 'Cancelled';
     ownerId: string;
+};
+
+export type KiranaStore = {
+  id: string;
+  name: string;
+  villageName: string;
+  description: string;
+  imageUrl: string;
 };
 
 export const villages: Village[] = [
@@ -320,6 +328,37 @@ export const internships: Internship[] = [
   }
 ];
 
+export const kiranaStores: KiranaStore[] = [
+    {
+        id: "kirana-mawali-1",
+        name: "Shankar Kirana Store",
+        villageName: "Mawali",
+        description: "Your one-stop shop for daily essentials, local spices, and fresh produce. Proudly accepting VillageCoins.",
+        imageUrl: "https://placehold.co/600x400.png"
+    },
+    {
+        id: "kirana-nako-1",
+        name: "Himalayan General Store",
+        villageName: "Nako",
+        description: "Stock up on supplies, trekking snacks, and local apricots. We support the VillageCoins initiative!",
+        imageUrl: "https://placehold.co/600x400.png"
+    },
+    {
+        id: "kirana-hampi-1",
+        name: "Tungabhadra Traders",
+        villageName: "Hampi",
+        description: "Find everything from cold drinks to souvenirs. Pay with VillageCoins and support local economy.",
+        imageUrl: "https://placehold.co/600x400.png"
+    },
+    {
+        id: "kirana-araku-1",
+        name: "Valley Organics",
+        villageName: "Araku Valley",
+        description: "Specializing in organic coffee, local honey, and tribal handicrafts. VillageCoins welcome here.",
+        imageUrl: "https://placehold.co/600x400.png"
+    }
+];
+
 let bookings: Booking[] = [
     { id: 'BK001', villageName: 'Mawali', guestName: 'Alice Johnson', checkIn: '2024-08-10', checkOut: '2024-08-15', status: 'Confirmed', ownerId: 'owner' },
     { id: 'BK002', villageName: 'Nako', guestName: 'Bob Williams', checkIn: '2024-08-12', checkOut: '2024-08-18', status: 'Confirmed', ownerId: 'owner' },
@@ -396,3 +435,5 @@ export const addApplication = (opportunityId: string, userId: string): Applicati
     applications.push(newApplication);
     return newApplication;
 }
+
+    
