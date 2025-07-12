@@ -87,7 +87,7 @@ export const villages: Village[] = [
     longDescription: "Nestled in the East Khasi Hills of Meghalaya, Mawali is a picturesque village that offers a unique blend of natural beauty and cultural heritage. It is famed for its incredible living root bridges, handcrafted by the local Khasi tribes over generations. The village is surrounded by dense tropical forests, sparkling waterfalls, and a tranquil atmosphere, making it a perfect escape for nature lovers and those seeking peace.",
     mainImage: "https://placehold.co/600x400.png",
     vrImages: [
-      "https://upload.wikimedia.org/wikipedia/commons/f/f7/A_360_view_of_the_Nohkalikai_Falls.jpg",
+      "https://i.ibb.co/Vvz371p/mawali-360.jpg",
     ],
     coordinates: { latitude: 25.4939, longitude: 91.8756 },
     instagramPosts: [
@@ -130,7 +130,7 @@ export const villages: Village[] = [
     longDescription: "Perched at an elevation of 3,662 meters in the starkly beautiful Spiti Valley, Nako is a village that seems frozen in time. Its centerpiece is the sacred Nako Lake, surrounded by willow and poplar trees. The village is also home to several ancient Buddhist monasteries, adorned with intricate murals and scriptures. The air is thin, the views are panoramic, and the sense of spirituality is profound.",
     mainImage: "https://placehold.co/600x400.png",
     vrImages: [
-      "https://upload.wikimedia.org/wikipedia/commons/c/c5/A_360_degree_view_of_the_Key_Monastery.jpg",
+      "https://i.ibb.co/RSCG65b/nako-360.jpg",
     ],
     coordinates: { latitude: 31.8801, longitude: 78.6315 },
     instagramPosts: [
@@ -172,7 +172,7 @@ export const villages: Village[] = [
     longDescription: "Hampi, a UNESCO World Heritage Site in Karnataka, is a captivating landscape of ancient ruins, giant boulders, and Dravidian temples. Once the capital of the Vijayanagara Empire, its vast, open-air museum is dotted with magnificent temples, palace remains, and riverside ruins that transport you back in time. It's a dream destination for history buffs, rock climbers, and spiritual seekers.",
     mainImage: "https://i.ibb.co/6y1vCjD/hampi-stone-chariot.jpg",
     vrImages: [
-      "https://upload.wikimedia.org/wikipedia/commons/8/87/Hampi_virupaksha_temple_and_tungabhadra_river_360_panorama.jpg",
+      "https://i.ibb.co/VvWHPb8/hampi-360.jpg",
     ],
     coordinates: { latitude: 15.3350, longitude: 76.4600 },
     instagramPosts: [
@@ -215,7 +215,7 @@ export const villages: Village[] = [
     longDescription: "Araku Valley is a verdant paradise nestled in the Eastern Ghats. Famous for its aromatic coffee plantations, the valley is also home to several indigenous tribal communities. The journey to Araku by train, through tunnels and over bridges, is an adventure in itself. Visitors can explore tribal museums, trek to stunning waterfalls like Katiki, and savor the unique flavor of locally grown organic coffee.",
     mainImage: "https://i.ibb.co/208TqzG3/arakuvalley.jpg",
     vrImages: [
-      "https://upload.wikimedia.org/wikipedia/commons/d/d3/A_360_view_of_Araku_valley_from_Galikonda_View_Point.jpg",
+      "https://i.ibb.co/pwnxLcd/araku-360.jpg",
     ],
     coordinates: { latitude: 18.3333, longitude: 82.8667 },
     instagramPosts: [
