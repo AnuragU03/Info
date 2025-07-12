@@ -1,6 +1,7 @@
+
 'use client';
 
-import { useContext, useEffect, useCallback } from 'react';
+import { useContext, useEffect, useCallback, useRef } from 'react';
 import { TranslationContext } from '@/context/translation-context';
 import { getTranslation } from '@/app/actions';
 
@@ -11,49 +12,50 @@ export function useTranslation() {
   }
 
   const { language, translations, addTranslation, setLanguage } = context;
+  const requestedTranslations = useRef(new Set<string>());
 
   const t = useCallback((text: string): string => {
     if (language === 'en' || !text) {
       return text;
     }
+
     const key = `${language}:${text}`;
-    return translations[key] || text;
+    if (translations[key]) {
+      return translations[key];
+    }
+
+    // Mark for translation, but don't fetch here
+    if (typeof window !== 'undefined') {
+        requestedTranslations.current.add(text);
+    }
+    
+    return text; // Return original text for now
   }, [language, translations]);
-
+  
   useEffect(() => {
-    // This effect is now just for listening to changes on `t` and fetching.
-    // We don't need to manage requestedTranslations manually anymore.
-  }, [t]);
+    const textsToTranslate = Array.from(requestedTranslations.current);
+    if (textsToTranslate.length > 0 && language !== 'en') {
+      const translateAndStore = async (text: string, lang: string) => {
+        const key = `${lang}:${text}`;
+        if (translations[key]) {
+          return;
+        }
+        try {
+          const translatedText = await getTranslation(text, lang);
+          if (translatedText) {
+            addTranslation(key, translatedText);
+          }
+        } catch (e) {
+          console.error("Translation failed for:", text, e);
+        }
+      };
 
-  const translateAndStore = useCallback(async (text: string, lang: string) => {
-    const key = `${lang}:${text}`;
-    if (translations[key] || lang === 'en') {
-      return;
+      textsToTranslate.forEach(text => {
+        translateAndStore(text, language);
+      });
+      requestedTranslations.current.clear();
     }
-    try {
-      const translatedText = await getTranslation(text, lang);
-      if (translatedText) {
-        addTranslation(key, translatedText);
-      }
-    } catch (e) {
-      console.error("Translation failed for:", text, e);
-    }
-  }, [addTranslation, translations]);
+  }, [t, language, addTranslation, translations]); // Dependency array now correctly tracks changes
 
-  // This function will be called from components to register text for translation
-  const registerTextForTranslation = useCallback((text: string) => {
-    if (language !== 'en' && text) {
-       translateAndStore(text, language);
-    }
-  }, [language, translateAndStore]);
-
-  const wrappedT = useCallback((text: string): string => {
-      // Register the text for translation when it's first seen
-      if (typeof window !== 'undefined') { // Ensure this runs only on the client
-          registerTextForTranslation(text);
-      }
-      return t(text);
-  }, [t, registerTextForTranslation]);
-
-  return { t: wrappedT, setLanguage, currentLanguage: language };
+  return { t, setLanguage, currentLanguage: language };
 }

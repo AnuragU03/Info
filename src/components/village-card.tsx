@@ -1,3 +1,6 @@
+
+'use client';
+
 import Image from "next/image";
 import Link from "next/link";
 import { MapPin, ArrowRight } from "lucide-react";
@@ -20,11 +23,11 @@ export function VillageCard({ village }: VillageCardProps) {
         <div className="relative">
           <Image
             src={village.mainImage}
-            alt={`A scenic view of ${village.name}`}
+            alt={`A scenic view of ${t(village.name)}`}
             width={600}
             height={400}
             className="object-cover w-full h-48 group-hover:scale-105 transition-transform duration-300"
-            data-ai-hint={`${village.location.split(',')[0].toLowerCase()} landscape`}
+            data-ai-hint={`${t(village.location.split(',')[0]).toLowerCase()} landscape`}
           />
           <Badge variant="secondary" className="absolute top-3 right-3">{t(village.location.split(',')[0])}</Badge>
         </div>
