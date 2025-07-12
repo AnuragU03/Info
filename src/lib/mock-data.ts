@@ -266,7 +266,7 @@ export const internships: Internship[] = [
         "Document farming techniques through photos and notes."
     ],
     benefits: ["Experience Certificate", "University Credits Possible", "Stay and meals with a local family"],
-    imageUrl: "https://placehold.co/600x400.png",
+    imageUrl: "https://i.ibb.co/qLJ3H3y1/organic.jpg",
     sdgs: [4, 12]
   },
   {
