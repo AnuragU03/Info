@@ -1,7 +1,6 @@
 
 'use client';
 
-import { useState } from 'react';
 import { getBookingsByOwner, getApplicationsByUser } from '@/lib/mock-data';
 import {
   Table,
@@ -18,13 +17,12 @@ import { useAuth } from '@/context/auth-context';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 export default function UserDashboardPage() {
-  const { userRole } = useAuth();
+  const { userRole, villageCoins } = useAuth();
   // In a real app, userRole would be a user ID. We use the role as a proxy for the user ID here.
   const userId = userRole || 'guest';
   
   const ownerBookings = getBookingsByOwner(userId);
   const userApplications = getApplicationsByUser(userId);
-  const [villageCoins] = useState(1250); // Mock data for VillageCoins balance
 
   const statusVariant = (status: string) => {
     switch (status) {

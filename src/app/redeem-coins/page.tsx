@@ -17,9 +17,11 @@ import {
   DialogFooter,
 } from '@/components/ui/dialog';
 import { CircleDollarSign, Send, CheckCircle } from 'lucide-react';
+import { useAuth } from '@/context/auth-context';
 
 export default function RedeemCoinsPage() {
   const { toast } = useToast();
+  const { villageCoins, redeemCoins } = useAuth();
   const [selectedStore, setSelectedStore] = useState<KiranaStore | null>(null);
   const [amount, setAmount] = useState('');
   const [isSuccess, setIsSuccess] = useState(false);
@@ -31,7 +33,8 @@ export default function RedeemCoinsPage() {
   };
 
   const handleConfirmRedemption = () => {
-    if (!amount || parseInt(amount) <= 0) {
+    const redeemAmount = parseInt(amount);
+    if (!redeemAmount || redeemAmount <= 0) {
       toast({
         variant: 'destructive',
         title: 'Invalid Amount',
@@ -39,7 +42,16 @@ export default function RedeemCoinsPage() {
       });
       return;
     }
-    // In a real app, you would process the transaction here.
+    if (redeemAmount > villageCoins) {
+        toast({
+            variant: 'destructive',
+            title: 'Insufficient Balance',
+            description: 'You do not have enough VillageCoins for this transaction.',
+        });
+        return;
+    }
+
+    redeemCoins(redeemAmount);
     setIsSuccess(true);
     toast({
       title: 'Redemption Successful!',
@@ -56,7 +68,7 @@ export default function RedeemCoinsPage() {
               Redeem VillageCoins
             </h1>
             <p className="text-lg text-muted-foreground mt-2">
-              Use your earnings at partnered local stores.
+              Use your earnings at partnered local stores. Your balance: <span className="font-bold text-accent">{villageCoins}</span> coins.
             </p>
           </div>
 
@@ -125,7 +137,7 @@ export default function RedeemCoinsPage() {
                     />
                   </div>
                   <p className="text-xs text-muted-foreground text-center">
-                    Your current balance is 1,250 VillageCoins.
+                    Your current balance is {villageCoins} VillageCoins.
                   </p>
                 </div>
               )}
@@ -146,5 +158,3 @@ export default function RedeemCoinsPage() {
     </>
   );
 }
-
-    
