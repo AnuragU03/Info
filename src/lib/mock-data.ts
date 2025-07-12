@@ -55,8 +55,7 @@ export const villages: Village[] = [
     longDescription: "Nestled in the East Khasi Hills of Meghalaya, Mawali is a picturesque village that offers a unique blend of natural beauty and cultural heritage. It is famed for its incredible living root bridges, handcrafted by the local Khasi tribes over generations. The village is surrounded by dense tropical forests, sparkling waterfalls, and a tranquil atmosphere, making it a perfect escape for nature lovers and those seeking peace.",
     mainImage: "https://placehold.co/600x400.png",
     vrImages: [
-      "https://placehold.co/4096x2048.png",
-      "https://placehold.co/4096x2048.png",
+      "https://i.ibb.co/208TqzG3/arakuvalley.jpg",
     ],
     coordinates: { latitude: 25.4939, longitude: 91.8756 },
     instagramPosts: [
@@ -71,19 +70,19 @@ export const villages: Village[] = [
           name: "Serene Homestay", 
           type: "Homestay", 
           description: "A cozy stay with a local family, offering authentic Khasi meals.",
-          vrImages: ["https://placehold.co/4096x2048.png", "https://placehold.co/4096x2048.png"]
+          vrImages: ["https://i.ibb.co/208TqzG3/arakuvalley.jpg"]
         },
         { 
           name: "Root Bridge View Resort", 
           type: "Hotel", 
           description: "A comfortable hotel with stunning views of the surrounding forests.",
-          vrImages: ["https://placehold.co/4096x2048.png"]
+          vrImages: ["https://i.ibb.co/208TqzG3/arakuvalley.jpg"]
         },
         { 
           name: "Jungle Vibe Homestay", 
           type: "Homestay", 
           description: "Experience the jungle up close in this rustic and charming homestay.",
-          vrImages: ["https://placehold.co/4096x2048.png", "https://placehold.co/4096x2048.png"]
+          vrImages: ["https://i.ibb.co/208TqzG3/arakuvalley.jpg"]
         },
     ],
     communityPosts: [
@@ -99,8 +98,7 @@ export const villages: Village[] = [
     longDescription: "Perched at an elevation of 3,662 meters in the starkly beautiful Spiti Valley, Nako is a village that seems frozen in time. Its centerpiece is the sacred Nako Lake, surrounded by willow and poplar trees. The village is also home to several ancient Buddhist monasteries, adorned with intricate murals and scriptures. The air is thin, the views are panoramic, and the sense of spirituality is profound.",
     mainImage: "https://placehold.co/600x400.png",
     vrImages: [
-      "https://placehold.co/4096x2048.png",
-      "https://placehold.co/4096x2048.png",
+      "https://i.ibb.co/208TqzG3/arakuvalley.jpg",
     ],
     coordinates: { latitude: 31.8801, longitude: 78.6315 },
     instagramPosts: [
@@ -115,19 +113,19 @@ export const villages: Village[] = [
           name: "Lake View Hotel", 
           type: "Hotel", 
           description: "Wake up to mesmerizing views of Nako Lake and the Himalayas.",
-          vrImages: ["https://placehold.co/4096x2048.png"]
+          vrImages: ["https://i.ibb.co/208TqzG3/arakuvalley.jpg"]
         },
         { 
           name: "Himalayan Homestay", 
           type: "Homestay", 
           description: "Experience the warm hospitality of a local Spitian family.",
-          vrImages: ["https://placehold.co/4096x2048.png", "https://placehold.co/4096x2048.png"]
+          vrImages: ["https://i.ibb.co/208TqzG3/arakuvalley.jpg"]
         },
         { 
           name: "Nako Retreat", 
           type: "Hotel", 
           description: "A peaceful retreat offering comfortable rooms and guided tours.",
-          vrImages: ["https://placehold.co/4096x2048.png"]
+          vrImages: ["https://i.ibb.co/208TqzG3/arakuvalley.jpg"]
         },
     ],
     communityPosts: [
@@ -142,8 +140,7 @@ export const villages: Village[] = [
     longDescription: "Hampi, a UNESCO World Heritage Site in Karnataka, is a captivating landscape of ancient ruins, giant boulders, and Dravidian temples. Once the capital of the Vijayanagara Empire, its vast, open-air museum is dotted with magnificent temples, palace remains, and riverside ruins that transport you back in time. It's a dream destination for history buffs, rock climbers, and spiritual seekers.",
     mainImage: "https://placehold.co/600x400.png",
     vrImages: [
-      "https://placehold.co/4096x2048.png",
-      "https://placehold.co/4096x2048.png",
+      "https://i.ibb.co/208TqzG3/arakuvalley.jpg",
     ],
     coordinates: { latitude: 15.3350, longitude: 76.4600 },
     instagramPosts: [
@@ -158,19 +155,19 @@ export const villages: Village[] = [
           name: "Riverside Ruins Homestay", 
           type: "Homestay", 
           description: "A peaceful stay with views of the Tungabhadra river and ancient ruins.",
-          vrImages: ["https://placehold.co/4096x2048.png", "https://placehold.co/4096x2048.png"]
+          vrImages: ["https://i.ibb.co/208TqzG3/arakuvalley.jpg"]
         },
         { 
           name: "The Boulder Retreat", 
           type: "Hotel", 
           description: "A unique hotel built amidst Hampi's famous boulders, offering modern comfort.",
-          vrImages: ["https://placehold.co/4096x2048.png"]
+          vrImages: ["https://i.ibb.co/208TqzG3/arakuvalley.jpg"]
         },
         { 
           name: "Temple View Guesthouse", 
           type: "Hotel", 
           description: "Simple and clean rooms located conveniently near the main temple complex.",
-          vrImages: ["https://placehold.co/4096x2048.png"]
+          vrImages: ["https://i.ibb.co/208TqzG3/arakuvalley.jpg"]
         },
     ],
     communityPosts: [
@@ -201,19 +198,19 @@ export const villages: Village[] = [
           name: "Coffee County Homestay", 
           type: "Homestay", 
           description: "Stay amidst a coffee plantation and learn about coffee making.",
-          vrImages: ["https://placehold.co/4096x2048.png", "https://placehold.co/4096x2048.png"]
+          vrImages: ["https://i.ibb.co/208TqzG3/arakuvalley.jpg"]
         },
         { 
           name: "Valley View Resort", 
           type: "Hotel", 
           description: "A resort offering panoramic views of the entire Araku Valley.",
-          vrImages: ["https://placehold.co/4096x2048.png"]
+          vrImages: ["https://i.ibb.co/208TqzG3/arakuvalley.jpg"]
         },
         { 
           name: "Tribal Traditions", 
           type: "Homestay", 
           description: "An authentic stay with a local tribal family to learn their way of life.",
-          vrImages: ["https://placehold.co/4096x2048.png"]
+          vrImages: ["https://i.ibb.co/208TqzG3/arakuvalley.jpg"]
         },
     ],
     communityPosts: []
