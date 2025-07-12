@@ -20,14 +20,14 @@ import {
 
 const panoramaImages = [
     {
-        src: "https://i.ibb.co/208TqzG3/arakuvalley.jpg",
-        title: "Araku Valley",
-        description: "Lush coffee plantations in the Eastern Ghats."
+        src: "https://pannellum.org/images/alma.jpg",
+        title: "Alma, Colorado",
+        description: "A historic mining town in the Rocky Mountains."
     },
     {
-        src: "https://i.ibb.co/6y1vCjD/hampi-stone-chariot.jpg",
-        title: "Hampi, Karnataka",
-        description: "Ancient ruins of the Vijayanagara Empire."
+        src: "https://pannellum.org/images/jampan-korea.jpg",
+        title: "Jampan, South Korea",
+        description: "A beautiful coastal scene."
     },
     {
         src: "https://pannellum.org/images/cerro-toco-0.jpg",
