@@ -87,7 +87,7 @@ export const villages: Village[] = [
     longDescription: "Nestled in the East Khasi Hills of Meghalaya, Mawali is a picturesque village that offers a unique blend of natural beauty and cultural heritage. It is famed for its incredible living root bridges, handcrafted by the local Khasi tribes over generations. The village is surrounded by dense tropical forests, sparkling waterfalls, and a tranquil atmosphere, making it a perfect escape for nature lovers and those seeking peace.",
     mainImage: "https://placehold.co/600x400.png",
     vrImages: [
-      "https://i.ibb.co/Vvz371p/mawali-360.jpg",
+      "https://i.imgur.com/BAnb5y7.jpg",
     ],
     coordinates: { latitude: 25.4939, longitude: 91.8756 },
     instagramPosts: [
@@ -102,19 +102,19 @@ export const villages: Village[] = [
           name: "Serene Homestay", 
           type: "Homestay", 
           description: "A cozy stay with a local family, offering authentic Khasi meals.",
-          vrImages: ["https://i.ibb.co/208TqzG3/arakuvalley.jpg"]
+          vrImages: ["https://i.imgur.com/BAnb5y7.jpg"]
         },
         { 
           name: "Root Bridge View Resort", 
           type: "Hotel", 
           description: "A comfortable hotel with stunning views of the surrounding forests.",
-          vrImages: ["https://i.ibb.co/208TqzG3/arakuvalley.jpg"]
+          vrImages: ["https://i.imgur.com/BAnb5y7.jpg"]
         },
         { 
           name: "Jungle Vibe Homestay", 
           type: "Homestay", 
           description: "Experience the jungle up close in this rustic and charming homestay.",
-          vrImages: ["https://i.ibb.co/208TqzG3/arakuvalley.jpg"]
+          vrImages: ["https://i.imgur.com/BAnb5y7.jpg"]
         },
     ],
     communityPosts: [
@@ -130,7 +130,7 @@ export const villages: Village[] = [
     longDescription: "Perched at an elevation of 3,662 meters in the starkly beautiful Spiti Valley, Nako is a village that seems frozen in time. Its centerpiece is the sacred Nako Lake, surrounded by willow and poplar trees. The village is also home to several ancient Buddhist monasteries, adorned with intricate murals and scriptures. The air is thin, the views are panoramic, and the sense of spirituality is profound.",
     mainImage: "https://placehold.co/600x400.png",
     vrImages: [
-      "https://i.ibb.co/RSCG65b/nako-360.jpg",
+      "https://i.imgur.com/O9i1Lrh.jpg",
     ],
     coordinates: { latitude: 31.8801, longitude: 78.6315 },
     instagramPosts: [
@@ -145,19 +145,19 @@ export const villages: Village[] = [
           name: "Lake View Hotel", 
           type: "Hotel", 
           description: "Wake up to mesmerizing views of Nako Lake and the Himalayas.",
-          vrImages: ["https://i.ibb.co/208TqzG3/arakuvalley.jpg"]
+          vrImages: ["https://i.imgur.com/O9i1Lrh.jpg"]
         },
         { 
           name: "Himalayan Homestay", 
           type: "Homestay", 
           description: "Experience the warm hospitality of a local Spitian family.",
-          vrImages: ["https://i.ibb.co/208TqzG3/arakuvalley.jpg"]
+          vrImages: ["https://i.imgur.com/O9i1Lrh.jpg"]
         },
         { 
           name: "Nako Retreat", 
           type: "Hotel", 
           description: "A peaceful retreat offering comfortable rooms and guided tours.",
-          vrImages: ["https://i.ibb.co/208TqzG3/arakuvalley.jpg"]
+          vrImages: ["https://i.imgur.com/O9i1Lrh.jpg"]
         },
     ],
     communityPosts: [
@@ -172,7 +172,7 @@ export const villages: Village[] = [
     longDescription: "Hampi, a UNESCO World Heritage Site in Karnataka, is a captivating landscape of ancient ruins, giant boulders, and Dravidian temples. Once the capital of the Vijayanagara Empire, its vast, open-air museum is dotted with magnificent temples, palace remains, and riverside ruins that transport you back in time. It's a dream destination for history buffs, rock climbers, and spiritual seekers.",
     mainImage: "https://i.ibb.co/6y1vCjD/hampi-stone-chariot.jpg",
     vrImages: [
-      "https://i.ibb.co/VvWHPb8/hampi-360.jpg",
+      "https://i.imgur.com/SUY4m4v.jpg",
     ],
     coordinates: { latitude: 15.3350, longitude: 76.4600 },
     instagramPosts: [
@@ -187,19 +187,19 @@ export const villages: Village[] = [
           name: "Riverside Ruins Homestay", 
           type: "Homestay", 
           description: "A peaceful stay with views of the Tungabhadra river and ancient ruins.",
-          vrImages: ["https://i.ibb.co/208TqzG3/arakuvalley.jpg"]
+          vrImages: ["https://i.imgur.com/SUY4m4v.jpg"]
         },
         { 
           name: "The Boulder Retreat", 
           type: "Hotel", 
           description: "A unique hotel built amidst Hampi's famous boulders, offering modern comfort.",
-          vrImages: ["https://i.ibb.co/208TqzG3/arakuvalley.jpg"]
+          vrImages: ["https://i.imgur.com/SUY4m4v.jpg"]
         },
         { 
           name: "Temple View Guesthouse", 
           type: "Hotel", 
           description: "Simple and clean rooms located conveniently near the main temple complex.",
-          vrImages: ["https://i.ibb.co/208TqzG3/arakuvalley.jpg"]
+          vrImages: ["https://i.imgur.com/SUY4m4v.jpg"]
         },
     ],
     communityPosts: [
@@ -215,7 +215,7 @@ export const villages: Village[] = [
     longDescription: "Araku Valley is a verdant paradise nestled in the Eastern Ghats. Famous for its aromatic coffee plantations, the valley is also home to several indigenous tribal communities. The journey to Araku by train, through tunnels and over bridges, is an adventure in itself. Visitors can explore tribal museums, trek to stunning waterfalls like Katiki, and savor the unique flavor of locally grown organic coffee.",
     mainImage: "https://i.ibb.co/208TqzG3/arakuvalley.jpg",
     vrImages: [
-      "https://i.ibb.co/pwnxLcd/araku-360.jpg",
+      "https://i.imgur.com/m4nwu3d.jpg"
     ],
     coordinates: { latitude: 18.3333, longitude: 82.8667 },
     instagramPosts: [
@@ -230,19 +230,19 @@ export const villages: Village[] = [
           name: "Coffee County Homestay", 
           type: "Homestay", 
           description: "Stay amidst a coffee plantation and learn about coffee making.",
-          vrImages: ["https://i.ibb.co/208TqzG3/arakuvalley.jpg"]
+          vrImages: ["https://i.imgur.com/m4nwu3d.jpg"]
         },
         { 
           name: "Valley View Resort", 
           type: "Hotel", 
           description: "A resort offering panoramic views of the entire Araku Valley.",
-          vrImages: ["https://i.ibb.co/208TqzG3/arakuvalley.jpg"]
+          vrImages: ["https://i.imgur.com/m4nwu3d.jpg"]
         },
         { 
           name: "Tribal Traditions", 
           type: "Homestay", 
           description: "An authentic stay with a local tribal family to learn their way of life.",
-          vrImages: ["https://i.ibb.co/208TqzG3/arakuvalley.jpg"]
+          vrImages: ["https://i.imgur.com/m4nwu3d.jpg"]
         },
     ],
     communityPosts: []
