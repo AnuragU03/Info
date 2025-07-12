@@ -20,6 +20,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
 import { QrCode, Upload, Leaf, ScanSearch, Loader2, Sparkles, ChevronDown, BadgePercent, Tag, CircleDollarSign } from 'lucide-react';
 import { useState } from 'react';
+import QRCode from 'qrcode';
 import { getLocationFromImage, getSuggestedPrice } from '../actions';
 import type { SuggestPriceOutput } from '@/ai/flows/suggest-price';
 import {
@@ -36,6 +37,7 @@ import {
   DialogFooter,
 } from '@/components/ui/dialog';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import Image from 'next/image';
 
 const formSchema = z.object({
   villageName: z.string().min(2, {
@@ -85,6 +87,7 @@ export default function ListYourSpacePage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isAutofillOpen, setIsAutofillOpen] = useState(false);
   const [priceSuggestion, setPriceSuggestion] = useState<SuggestPriceOutput | null>(null);
+  const [qrCodeUrl, setQrCodeUrl] = useState<string | null>(null);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -156,6 +159,39 @@ export default function ListYourSpacePage() {
     });
     form.reset();
   }
+
+  const handleGenerateQr = async () => {
+    const values = form.getValues();
+    const isValid = await form.trigger();
+    if (!isValid) {
+      toast({
+        variant: 'destructive',
+        title: 'Incomplete Form',
+        description: 'Please fill out all required fields before generating a QR code.',
+      });
+      return;
+    }
+    
+    const qrData = JSON.stringify({
+      villageName: values.villageName,
+      description: values.description,
+      culturalAttractions: values.culturalAttractions,
+      uniqueOfferings: values.uniqueOfferings,
+      ecoBadges: values.ecoBadges,
+    });
+
+    try {
+      const url = await QRCode.toDataURL(qrData);
+      setQrCodeUrl(url);
+    } catch (err) {
+      console.error(err);
+      toast({
+        variant: 'destructive',
+        title: 'QR Code Error',
+        description: 'Could not generate the QR code.',
+      });
+    }
+  };
 
 
   return (
@@ -346,7 +382,7 @@ export default function ListYourSpacePage() {
                 </FormItem>
 
             <div className="flex flex-col md:flex-row gap-4">
-              <Button type="button" variant="secondary" className="w-full">
+              <Button type="button" variant="secondary" className="w-full" onClick={handleGenerateQr}>
                 <QrCode className="mr-2 h-4 w-4" />
                 Generate QR Code
               </Button>
@@ -405,6 +441,25 @@ export default function ListYourSpacePage() {
             </DialogFooter>
         </DialogContent>
     </Dialog>
+    
+    <Dialog open={!!qrCodeUrl} onOpenChange={(isOpen) => !isOpen && setQrCodeUrl(null)}>
+        <DialogContent className="sm:max-w-xs">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-headline">Your Listing QR Code</DialogTitle>
+            <DialogDescription>
+              Share this code to link directly to your listing details.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="p-4 flex justify-center">
+            {qrCodeUrl && <Image src={qrCodeUrl} alt="Listing QR Code" width={256} height={256} />}
+          </div>
+          <DialogFooter>
+            <Button onClick={() => setQrCodeUrl(null)} className="w-full">
+              Close
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </>
   );
 }
