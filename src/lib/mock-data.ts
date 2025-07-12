@@ -285,7 +285,7 @@ export const internships: Internship[] = [
         "Supporting the social media team with live updates."
     ],
     benefits: ["Certificate of Participation", "Free access to all festival events", "Meet local artists and performers"],
-    imageUrl: "https://placehold.co/600x400.png",
+    imageUrl: "https://i.ibb.co/CpRtvv4j/hampi-utsav.jpg",
     sdgs: [4, 11]
   },
   {
