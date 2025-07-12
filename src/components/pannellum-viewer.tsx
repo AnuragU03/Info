@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useRef, useEffect, useState, useCallback } from 'react';
+import { useRef, useEffect, useState, useId } from 'react';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight, Maximize, Loader2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
@@ -25,6 +25,9 @@ export function PannellumViewer({ images }: PannellumViewerProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isReady, setIsReady] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const uniqueId = useId();
+  const pannellumContainerId = `pannellum-container-${uniqueId}`;
+
 
   // Load the pannellum script and CSS
   useEffect(() => {
@@ -75,7 +78,7 @@ export function PannellumViewer({ images }: PannellumViewerProps) {
       setIsLoading(true);
 
       try {
-        viewerRef.current = window.pannellum.viewer(viewerContainerRef.current.id, {
+        viewerRef.current = window.pannellum.viewer(pannellumContainerId, {
           type: 'equirectangular',
           panorama: images[currentIndex],
           autoLoad: true,
@@ -115,7 +118,7 @@ export function PannellumViewer({ images }: PannellumViewerProps) {
             viewerRef.current = null;
         }
     };
-  }, [isReady, currentIndex, images, toast]);
+  }, [isReady, currentIndex, images, toast, pannellumContainerId]);
 
 
   const handleNext = () => {
@@ -142,11 +145,9 @@ export function PannellumViewer({ images }: PannellumViewerProps) {
     );
   }
 
-  const uniqueId = `pannellum-container-${useRef(Math.random()).current}`;
-
   return (
     <div className="relative w-full h-full group bg-black">
-      <div id={uniqueId} ref={viewerContainerRef} className="w-full h-full" />
+      <div id={pannellumContainerId} ref={viewerContainerRef} className="w-full h-full" />
       
       {(isLoading || !isReady) && (
         <div className="absolute inset-0 flex items-center justify-center bg-black/50 z-20">
