@@ -85,7 +85,7 @@ export async function getTranslation(text: string, lang: string): Promise<string
 
 export async function addCommunityPost(villageId: string, postData: Omit<CommunityPost, 'id' | 'timestamp'>) {
     try {
-        addPostToVillage(villageId, postData);
+        await addPostToVillage(villageId, postData);
         revalidatePath(`/community/${villageId}`);
         return { success: true };
     } catch (error) {

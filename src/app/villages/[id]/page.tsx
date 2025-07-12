@@ -1,3 +1,4 @@
+
 import { getVillageById } from "@/lib/mock-data";
 import { notFound } from "next/navigation";
 import { Badge } from "@/components/ui/badge";
@@ -15,8 +16,8 @@ type VillagePageProps = {
   };
 };
 
-export default function VillagePage({ params }: VillagePageProps) {
-  const village = getVillageById(params.id);
+export default async function VillagePage({ params }: VillagePageProps) {
+  const village = await getVillageById(params.id);
 
   if (!village) {
     notFound();

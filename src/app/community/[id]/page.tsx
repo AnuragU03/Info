@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';
 import { Send, Image as ImageIcon, Video, Loader2 } from 'lucide-react';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { addCommunityPost } from '@/app/actions';
 import { useToast } from '@/hooks/use-toast';
 import { useAuth } from '@/context/auth-context';
@@ -17,20 +17,36 @@ import Image from 'next/image';
 export default function CommunityPage() {
   const params = useParams();
   const villageId = Array.isArray(params.id) ? params.id[0] : params.id;
-  const village = getVillageById(villageId);
   
+  // Use state to manage village data, which is now fetched asynchronously
+  const [village, setVillage] = useState<Awaited<ReturnType<typeof getVillageById>>>(undefined);
+
   const { toast } = useToast();
   const { userRole } = useAuth();
   const [message, setMessage] = useState('');
   const [isPosting, setIsPosting] = useState(false);
   
-  // In a real app, file uploads would be handled properly.
-  // For this prototype, we'll just log to the console.
+  useEffect(() => {
+    const fetchVillage = async () => {
+        const villageData = await getVillageById(villageId);
+        setVillage(villageData);
+    };
+    fetchVillage();
+  }, [villageId]);
+
+
   const imageInputRef = useRef<HTMLInputElement>(null);
   const videoInputRef = useRef<HTMLInputElement>(null);
 
   if (!village) {
-    notFound();
+    // Show a loading state or a skeleton while data is being fetched
+    return (
+        <div className="container mx-auto px-4 py-12">
+            <div className="flex justify-center">
+                <Loader2 className="h-8 w-8 animate-spin" />
+            </div>
+        </div>
+    );
   }
   
   const handlePost = async () => {
@@ -54,8 +70,6 @@ export default function CommunityPage() {
     
     setIsPosting(true);
     
-    // For this prototype, we'll use a hardcoded author and avatar.
-    // In a real app, this would come from the authenticated user's profile.
     const postData = {
         author: userRole === 'owner' ? 'Village Owner' : 'Admin User',
         avatarUrl: 'https://placehold.co/100x100.png',
@@ -70,6 +84,9 @@ export default function CommunityPage() {
             description: "Your message has been added to the community board.",
         });
         setMessage('');
+        // Refetch village data to show new post
+        const updatedVillageData = await getVillageById(villageId);
+        setVillage(updatedVillageData);
     } else {
         toast({
             variant: 'destructive',

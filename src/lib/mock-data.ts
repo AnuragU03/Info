@@ -1,4 +1,7 @@
 
+import { db } from './firebase';
+import { collection, doc, getDoc, getDocs, addDoc, query, orderBy, serverTimestamp, Timestamp } from 'firebase/firestore';
+
 export type Internship = {
   id: string;
   title: string;
@@ -77,7 +80,8 @@ export type KiranaStore = {
   description: string;
 };
 
-export const villages: Village[] = [
+// This data remains static for the prototype
+export const villages: Omit<Village, 'communityPosts'>[] = [
   {
     id: "mawali",
     name: "Mawali",
@@ -116,10 +120,6 @@ export const villages: Village[] = [
           vrImages: ["https://i.ibb.co/6JtXfRtF/Mawlynnong.jpg"]
         },
     ],
-    communityPosts: [
-      { id: '1', author: 'Traveler_Tom', avatarUrl: 'https://placehold.co/100x100.png', timestamp: '2 hours ago', message: 'Just reached Mawali! Any tips for the best time to visit the root bridges to avoid the crowds?' },
-      { id: '2', author: 'Local_Guide_Lina', avatarUrl: 'https://placehold.co/100x100.png', timestamp: '1 hour ago', message: 'Welcome! Early morning, around 7 AM, is perfect. The light is magical and it’s very peaceful.' },
-    ]
   },
   {
     id: "nako",
@@ -159,9 +159,6 @@ export const villages: Village[] = [
           vrImages: ["https://i.ibb.co/GfZNpfVt/Nako.jpg"]
         },
     ],
-    communityPosts: [
-        { id: '1', author: 'Hiker_Helen', avatarUrl: 'https://placehold.co/100x100.png', timestamp: 'Yesterday', message: 'The trek to the monastery was tough but so rewarding. The views are out of this world! Make sure to carry water.' },
-    ]
   },
   {
     id: "hampi",
@@ -201,10 +198,6 @@ export const villages: Village[] = [
           vrImages: ["https://i.ibb.co/spvk9rRY/hampi.jpg"]
         },
     ],
-    communityPosts: [
-        { id: '1', author: 'HistoryBuff_Raj', avatarUrl: 'https://placehold.co/100x100.png', timestamp: '4 days ago', message: 'Does anyone have a recommendation for a good guide for the Vittala Temple complex? Want to know all the details!' },
-        { id: '2', author: 'Climber_Chris', avatarUrl: 'https://placehold.co/100x100.png', timestamp: '2 days ago', message: 'The bouldering scene here is insane! Any other climbers around this week?' },
-    ]
   },
   {
     id: "araku",
@@ -244,7 +237,6 @@ export const villages: Village[] = [
           vrImages: ["https://i.ibb.co/0jndZX39/arakuvalley.jpg"]
         },
     ],
-    communityPosts: []
   },
 ];
 
@@ -367,29 +359,55 @@ let applications: Application[] = [
     { id: 'APP002', opportunityId: 'volunteer-hampi-festival', opportunityTitle: 'Hampi Utsav Volunteer', villageName: 'Hampi', userId: 'admin', userName: 'Charlie Brown', status: 'Accepted' },
 ];
 
+async function getCommunityPosts(villageId: string): Promise<CommunityPost[]> {
+    try {
+        const postsCol = collection(db, 'villages', villageId, 'communityPosts');
+        const q = query(postsCol, orderBy('timestamp', 'desc'));
+        const postsSnapshot = await getDocs(q);
+        const postsList = postsSnapshot.docs.map(doc => {
+            const data = doc.data();
+            const timestamp = data.timestamp as Timestamp;
+            return {
+                id: doc.id,
+                ...data,
+                timestamp: timestamp ? new Date(timestamp.seconds * 1000).toLocaleString() : 'Just now',
+            } as CommunityPost;
+        });
+        return postsList;
+    } catch (error) {
+        console.error("Error fetching community posts:", error);
+        return [];
+    }
+}
 
-export const getVillageById = (id: string): Village | undefined => {
-  return villages.find((v) => v.id === id);
+export const getVillageById = async (id: string): Promise<Village | undefined> => {
+    const villageData = villages.find((v) => v.id === id);
+    if (!villageData) {
+        return undefined;
+    }
+
+    const posts = await getCommunityPosts(id);
+
+    return {
+        ...villageData,
+        communityPosts: posts,
+    };
 };
 
 export const getInternshipById = (id: string): Internship | undefined => {
     return internships.find((i) => i.id === id);
 };
 
-export const addPostToVillage = (villageId: string, post: Omit<CommunityPost, 'id' | 'timestamp'>) => {
-  const village = getVillageById(villageId);
-  if (village) {
-    const newPost: CommunityPost = {
-      ...post,
-      id: `post-${Date.now()}`,
-      timestamp: new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' }),
-    };
-    if (!village.communityPosts) {
-        village.communityPosts = [];
+export const addPostToVillage = async (villageId: string, post: Omit<CommunityPost, 'id' | 'timestamp'>) => {
+    try {
+        const postsCol = collection(db, 'villages', villageId, 'communityPosts');
+        await addDoc(postsCol, {
+            ...post,
+            timestamp: serverTimestamp(),
+        });
+    } catch (error) {
+        console.error("Error adding post to village:", error);
     }
-    // Add new posts to the beginning of the array
-    village.communityPosts.unshift(newPost);
-  }
 };
 
 export const getAllBookings = (): Booking[] => {
@@ -397,7 +415,6 @@ export const getAllBookings = (): Booking[] => {
 };
 
 export const getBookingsByOwner = (ownerId: string): Booking[] => {
-    // For admin, return all bookings. For a specific owner, filter by ownerId.
     if (ownerId === 'admin') return bookings;
     return bookings.filter(b => b.ownerId === ownerId);
 };
@@ -415,7 +432,6 @@ export const addApplication = (opportunityId: string, userId: string): Applicati
     if (!opportunity) {
         return { error: "Opportunity not found." };
     }
-    // In a real app, we'd get the user's name from their profile
     const userName = userId === 'admin' ? 'Admin User' : 'Owner User';
 
     if (applications.some(a => a.opportunityId === opportunityId && a.userId === userId)) {
