@@ -27,7 +27,7 @@ export function PannellumViewer({ images }: PannellumViewerProps) {
   }, []);
 
   useEffect(() => {
-    if (viewerId && viewerRef.current && images.length > 0 && typeof window.pannellum !== 'undefined') {
+    if (viewerId && viewerRef.current && images && images.length > 0 && typeof window.pannellum !== 'undefined') {
       // Ensure the pannellum stylesheet is loaded
       const linkId = 'pannellum-css';
       if (!document.getElementById(linkId)) {
@@ -48,7 +48,11 @@ export function PannellumViewer({ images }: PannellumViewerProps) {
       });
 
       return () => {
-        viewer.destroy();
+        try {
+            viewer.destroy();
+        } catch (e) {
+            // It might already be destroyed, so we can ignore errors here.
+        }
       };
     }
   }, [currentIndex, images, viewerId]);

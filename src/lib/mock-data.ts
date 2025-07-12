@@ -396,5 +396,3 @@ export const addApplication = (opportunityId: string, userId: string): Applicati
     applications.push(newApplication);
     return newApplication;
 }
-
-    
