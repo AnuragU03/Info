@@ -130,7 +130,7 @@ export const villages: Village[] = [
     longDescription: "Perched at an elevation of 3,662 meters in the starkly beautiful Spiti Valley, Nako is a village that seems frozen in time. Its centerpiece is the sacred Nako Lake, surrounded by willow and poplar trees. The village is also home to several ancient Buddhist monasteries, adorned with intricate murals and scriptures. The air is thin, the views are panoramic, and the sense of spirituality is profound.",
     mainImage: "https://placehold.co/600x400.png",
     vrImages: [
-      "https://i.imgur.com/O9i1Lrh.jpg",
+      "https://i.ibb.co/GfZNpfVt/Nako.jpg",
     ],
     coordinates: { latitude: 31.8801, longitude: 78.6315 },
     instagramPosts: [
@@ -213,7 +213,7 @@ export const villages: Village[] = [
     location: "Andhra Pradesh, India",
     shortDescription: "Lush coffee plantations and tribal culture in the Eastern Ghats.",
     longDescription: "Araku Valley is a verdant paradise nestled in the Eastern Ghats. Famous for its aromatic coffee plantations, the valley is also home to several indigenous tribal communities. The journey to Araku by train, through tunnels and over bridges, is an adventure in itself. Visitors can explore tribal museums, trek to stunning waterfalls like Katiki, and savor the unique flavor of locally grown organic coffee.",
-    mainImage: "https://i.ibb.co/208TqzG3/arakuvalley.jpg",
+    mainImage: "https://i.ibb.co/jZ8TqzG/arakuvalley.jpg",
     vrImages: [
       "https://i.imgur.com/m4nwu3d.jpg"
     ],
