@@ -84,7 +84,7 @@ export default function Home() {
       <section 
         className="relative w-full py-20 md:py-32 text-center text-white"
         style={{
-          backgroundImage: "url('https://i.ibb.co/qMpxhDkp/main.jpg')",
+          backgroundImage: "url('https://i.ibb.co/cS5w0d7M/main1.jpg')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
