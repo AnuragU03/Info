@@ -321,16 +321,16 @@ export const internships: Internship[] = [
 ];
 
 let bookings: Booking[] = [
-    { id: 'BK001', villageName: 'Mawali', guestName: 'Alice Johnson', checkIn: '2024-08-10', checkOut: '2024-08-15', status: 'Confirmed', ownerId: 'owner1' },
-    { id: 'BK002', villageName: 'Nako', guestName: 'Bob Williams', checkIn: '2024-08-12', checkOut: '2024-08-18', status: 'Confirmed', ownerId: 'owner2' },
-    { id: 'BK003', villageName: 'Hampi', guestName: 'Charlie Brown', checkIn: '2024-09-01', checkOut: '2024-09-05', status: 'Pending', ownerId: 'owner3' },
-    { id: 'BK004', villageName: 'Mawali', guestName: 'Diana Prince', checkIn: '2024-09-02', checkOut: '2024-09-07', status: 'Confirmed', ownerId: 'owner1' },
-    { id: 'BK005', villageName: 'Araku Valley', guestName: 'Ethan Hunt', checkIn: '2024-09-20', checkOut: '2024-09-25', status: 'Cancelled', ownerId: 'owner4' },
+    { id: 'BK001', villageName: 'Mawali', guestName: 'Alice Johnson', checkIn: '2024-08-10', checkOut: '2024-08-15', status: 'Confirmed', ownerId: 'owner' },
+    { id: 'BK002', villageName: 'Nako', guestName: 'Bob Williams', checkIn: '2024-08-12', checkOut: '2024-08-18', status: 'Confirmed', ownerId: 'owner' },
+    { id: 'BK003', villageName: 'Hampi', guestName: 'Charlie Brown', checkIn: '2024-09-01', checkOut: '2024-09-05', status: 'Pending', ownerId: 'owner' },
+    { id: 'BK004', villageName: 'Mawali', guestName: 'Diana Prince', checkIn: '2024-09-02', checkOut: '2024-09-07', status: 'Confirmed', ownerId: 'owner' },
+    { id: 'BK005', villageName: 'Araku Valley', guestName: 'Ethan Hunt', checkIn: '2024-09-20', checkOut: '2024-09-25', status: 'Cancelled', ownerId: 'owner' },
 ];
 
 let applications: Application[] = [
-    { id: 'APP001', opportunityId: 'intern-mawali-farming', opportunityTitle: 'Organic Farming Internship', villageName: 'Mawali', userId: 'owner1', userName: 'Diana Prince', status: 'Under Review' },
-    { id: 'APP002', opportunityId: 'volunteer-hampi-festival', opportunityTitle: 'Hampi Utsav Volunteer', villageName: 'Hampi', userId: 'admin1', userName: 'Charlie Brown', status: 'Accepted' },
+    { id: 'APP001', opportunityId: 'intern-mawali-farming', opportunityTitle: 'Organic Farming Internship', villageName: 'Mawali', userId: 'owner', userName: 'Diana Prince', status: 'Under Review' },
+    { id: 'APP002', opportunityId: 'volunteer-hampi-festival', opportunityTitle: 'Hampi Utsav Volunteer', villageName: 'Hampi', userId: 'admin', userName: 'Charlie Brown', status: 'Accepted' },
 ];
 
 
@@ -359,6 +359,8 @@ export const getAllBookings = (): Booking[] => {
 };
 
 export const getBookingsByOwner = (ownerId: string): Booking[] => {
+    // For admin, return all bookings. For a specific owner, filter by ownerId.
+    if (ownerId === 'admin') return bookings;
     return bookings.filter(b => b.ownerId === ownerId);
 };
 
@@ -394,3 +396,5 @@ export const addApplication = (opportunityId: string, userId: string): Applicati
     applications.push(newApplication);
     return newApplication;
 }
+
+    
