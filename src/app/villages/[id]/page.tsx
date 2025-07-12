@@ -1,6 +1,5 @@
 import { getVillageById } from "@/lib/mock-data";
 import { notFound } from "next/navigation";
-import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { MapPin, Trees, Sun, Eye } from "lucide-react";
 import { NearbyAttractions } from "@/components/nearby-attractions";
@@ -37,26 +36,15 @@ export default function VillagePage({ params }: VillagePageProps) {
 
       <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">
         <div className="lg:col-span-2 space-y-8">
-          <div>
-            <Image
-                src={village.mainImage}
-                alt={`A scenic view of ${village.name}`}
-                width={1200}
-                height={675}
-                className="rounded-lg object-cover w-full aspect-video"
-                data-ai-hint={`${village.location.split(',')[0].toLowerCase()} landscape`}
-              />
-          </div>
-          
-           {village.vrImages && village.vrImages.length > 0 && (
+           {village.vrImages && village.vrImages.length > 0 ? (
             <div>
-              <h2 className="text-2xl font-headline font-semibold mb-4 flex items-center gap-2">
-                <Eye className="h-6 w-6 text-primary" />
-                360° Interactive View
-              </h2>
-              <div className="aspect-video w-full rounded-lg overflow-hidden">
+              <div className="aspect-video w-full rounded-lg overflow-hidden shadow-lg">
                 <PannellumViewer images={village.vrImages} />
               </div>
+            </div>
+          ) : (
+            <div className="aspect-video w-full rounded-lg bg-muted flex items-center justify-center">
+                <p className="text-muted-foreground">No 360° view available for this location.</p>
             </div>
           )}
 
