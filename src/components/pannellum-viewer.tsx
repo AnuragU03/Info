@@ -23,58 +23,26 @@ export function PannellumViewer({ images }: PannellumViewerProps) {
   const viewerContainerRef = useRef<HTMLDivElement>(null);
   const viewerRef = useRef<any>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isReady, setIsReady] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const uniqueId = useId();
   const pannellumContainerId = `pannellum-container-${uniqueId}`;
 
-
-  // Load the pannellum script and CSS
   useEffect(() => {
-    const loadPannellum = () => {
-      // Check if script is already present
-      if (document.getElementById('pannellum-script')) {
-        setIsReady(true);
+    const initViewer = () => {
+      if (!viewerContainerRef.current || !images || images.length === 0 || !images[currentIndex]) {
         return;
       }
 
-      const script = document.createElement('script');
-      script.id = 'pannellum-script';
-      script.src = '/pannellum.js';
-      script.async = true;
-      script.onload = () => setIsReady(true);
-      script.onerror = () => {
-        toast({
-          variant: 'destructive',
-          title: 'Failed to load viewer',
-          description: 'The 360° viewer script could not be loaded.',
-        });
-      };
-      document.body.appendChild(script);
-
-      const link = document.createElement('link');
-      link.id = 'pannellum-css';
-      link.rel = 'stylesheet';
-      link.href = '/pannellum.css';
-      document.head.appendChild(link);
-    };
-
-    if (typeof window.pannellum === 'undefined') {
-      loadPannellum();
-    } else {
-      setIsReady(true);
-    }
-  }, [toast]);
-
-  // Initialize and update the viewer
-  useEffect(() => {
-    if (isReady && viewerContainerRef.current && images && images.length > 0 && images[currentIndex]) {
       // If a viewer instance exists, destroy it first to avoid conflicts
       if (viewerRef.current) {
-        viewerRef.current.destroy();
+        try {
+          viewerRef.current.destroy();
+        } catch (e) {
+          console.error('Error destroying pannellum viewer:', e);
+        }
         viewerRef.current = null;
       }
-      
+
       setIsLoading(true);
 
       try {
@@ -91,34 +59,80 @@ export function PannellumViewer({ images }: PannellumViewerProps) {
         });
 
         viewerRef.current.on('load', () => {
-            setIsLoading(false);
+          setIsLoading(false);
         });
 
         viewerRef.current.on('error', (err: string) => {
-            console.error('Pannellum viewer error:', err);
-            toast({ variant: 'destructive', title: 'Viewer Error', description: `Could not load the image: ${err}` });
-            setIsLoading(false);
+          console.error('Pannellum viewer error:', err);
+          toast({ variant: 'destructive', title: 'Viewer Error', description: `Could not load the image: ${err}` });
+          setIsLoading(false);
         });
-
       } catch (e) {
         console.error("Pannellum viewer initialization error:", e);
-        toast({ variant: 'destructive', title: 'Viewer Error', description: 'Could not initialize the 360° viewer.'});
+        toast({ variant: 'destructive', title: 'Viewer Error', description: 'Could not initialize the 360° viewer.' });
         setIsLoading(false);
       }
-    }
-    
-    // Cleanup function to destroy viewer on component unmount or when dependencies change before re-render
-    return () => {
-        if (viewerRef.current) {
-            try {
-                viewerRef.current.destroy();
-            } catch (e) {
-                console.error('Error destroying pannellum viewer:', e);
-            }
-            viewerRef.current = null;
-        }
     };
-  }, [isReady, currentIndex, images, toast, pannellumContainerId]);
+
+    const loadPannellum = () => {
+      if (window.pannellum) {
+        initViewer();
+        return;
+      }
+
+      // Check if CSS is already present
+      if (!document.getElementById('pannellum-css')) {
+        const link = document.createElement('link');
+        link.id = 'pannellum-css';
+        link.rel = 'stylesheet';
+        link.href = '/pannellum.css';
+        document.head.appendChild(link);
+      }
+
+      // Check if script is already present
+      if (document.getElementById('pannellum-script')) {
+        // If script tag exists but window.pannellum is not there, it might be loading
+        const script = document.getElementById('pannellum-script') as HTMLScriptElement;
+        script.addEventListener('load', initViewer);
+        script.addEventListener('error', () => {
+             toast({
+                variant: 'destructive',
+                title: 'Failed to load viewer',
+                description: 'The 360° viewer script could not be loaded.',
+             });
+        });
+        return;
+      }
+
+      const script = document.createElement('script');
+      script.id = 'pannellum-script';
+      script.src = '/pannellum.js';
+      script.async = true;
+      script.onload = initViewer;
+      script.onerror = () => {
+        toast({
+          variant: 'destructive',
+          title: 'Failed to load viewer',
+          description: 'The 360° viewer script could not be loaded.',
+        });
+      };
+      document.body.appendChild(script);
+    };
+
+    loadPannellum();
+
+    // Cleanup function to destroy viewer on component unmount
+    return () => {
+      if (viewerRef.current) {
+        try {
+          viewerRef.current.destroy();
+        } catch (e) {
+          console.error('Error destroying pannellum viewer:', e);
+        }
+        viewerRef.current = null;
+      }
+    };
+  }, [currentIndex, images, toast, pannellumContainerId]);
 
 
   const handleNext = () => {
@@ -149,7 +163,7 @@ export function PannellumViewer({ images }: PannellumViewerProps) {
     <div className="relative w-full h-full group bg-black">
       <div id={pannellumContainerId} ref={viewerContainerRef} className="w-full h-full" />
       
-      {(isLoading || !isReady) && (
+      {isLoading && (
         <div className="absolute inset-0 flex items-center justify-center bg-black/50 z-20">
             <Loader2 className="h-8 w-8 animate-spin text-white" />
         </div>
