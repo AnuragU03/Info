@@ -67,12 +67,6 @@ export function Header() {
           >
             {t('Discover from Image')}
           </Link>
-          <Link
-            href="/discover-360"
-            className="transition-colors hover:text-primary"
-          >
-            {t('Discover 360°')}
-          </Link>
            <Link
             href="/redeem-coins"
             className="transition-colors hover:text-primary"

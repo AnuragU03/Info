@@ -7,7 +7,6 @@ import { identifyLocationFromImage } from '@/ai/flows/identify-location-from-ima
 import { generateItinerary } from '@/ai/flows/generate-itinerary';
 import { suggestPrice } from '@/ai/flows/suggest-price';
 import { translateText } from '@/ai/flows/translate-text';
-import { generate360Image, type Generate360ImageInput, type Generate360ImageOutput } from '@/ai/flows/generate-360-image';
 import type { GenerateItineraryInput } from '@/ai/flows/generate-itinerary';
 import type { SuggestPriceInput, SuggestPriceOutput } from '@/ai/flows/suggest-price';
 import { addPostToVillage as addPostToVillageData, type CommunityPost, addApplication as addApplicationData } from '@/lib/mock-data';
@@ -104,16 +103,5 @@ export async function applyForOpportunity(opportunityId: string, userId: string)
     } catch (error) {
         console.error('Error applying for opportunity:', error);
         return { success: false, error: 'An unexpected error occurred.' };
-    }
-}
-
-export async function get360Image(input: Generate360ImageInput): Promise<Generate360ImageOutput | { error: string }> {
-    try {
-        const result = await generate360Image(input);
-        return result;
-    } catch (error) {
-        console.error('Error generating 360 image:', error);
-        const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
-        return { error: `Could not generate a 360° image at this time. ${errorMessage}` };
     }
 }

@@ -6,9 +6,35 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { VillageCard } from "@/components/village-card";
 import { villages } from "@/lib/mock-data";
-import { Search, Mic, ArrowRight, Loader2 } from "lucide-react";
+import { Search, Mic, ArrowRight, Loader2, Eye } from "lucide-react";
 import { useTranslation } from "@/hooks/use-translation";
 import { useToast } from "@/hooks/use-toast";
+import { PannellumViewer } from "@/components/pannellum-viewer";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+
+const panoramaImages = [
+    {
+        src: "https://i.ibb.co/208TqzG3/arakuvalley.jpg",
+        title: "Araku Valley",
+        description: "Lush coffee plantations in the Eastern Ghats."
+    },
+    {
+        src: "https://i.ibb.co/6y1vCjD/hampi-stone-chariot.jpg",
+        title: "Hampi, Karnataka",
+        description: "Ancient ruins of the Vijayanagara Empire."
+    },
+    {
+        src: "https://pannellum.org/images/cerro-toco-0.jpg",
+        title: "Andes Mountains",
+        description: "Stark, beautiful high-altitude landscapes."
+    }
+];
 
 export default function Home() {
   const { t, currentLanguage } = useTranslation();
@@ -112,6 +138,34 @@ export default function Home() {
               </Button>
             </form>
           </div>
+        </div>
+      </section>
+
+      <section className="w-full py-16 md:py-24 bg-muted/50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-headline font-bold text-center mb-4">{t('Immerse Yourself in 360°')}</h2>
+           <p className="text-lg text-muted-foreground text-center mb-12 max-w-2xl mx-auto">
+            {t('Step inside India\'s most breathtaking landscapes. Click and drag to explore these panoramic views.')}
+          </p>
+          <Carousel className="w-full max-w-4xl mx-auto" opts={{ loop: true }}>
+            <CarouselContent>
+              {panoramaImages.map((image, index) => (
+                <CarouselItem key={index}>
+                    <div className="relative">
+                        <div className="aspect-video w-full rounded-lg overflow-hidden border">
+                            <PannellumViewer images={[image.src]} />
+                        </div>
+                        <div className="absolute bottom-4 left-4 bg-black/50 text-white p-3 rounded-lg">
+                            <h3 className="font-bold font-headline">{t(image.title)}</h3>
+                            <p className="text-sm">{t(image.description)}</p>
+                        </div>
+                    </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="left-[-50px]" />
+            <CarouselNext className="right-[-50px]" />
+          </Carousel>
         </div>
       </section>
 
