@@ -2,7 +2,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { notFound, useRouter } from 'next/navigation';
+import { notFound, useRouter, useParams } from 'next/navigation';
 import Image from 'next/image';
 import { getInternshipById, type Internship } from '@/lib/mock-data';
 import { Button } from '@/components/ui/button';
@@ -22,27 +22,24 @@ import { useAuth } from '@/context/auth-context';
 import { useToast } from '@/hooks/use-toast';
 import { applyForOpportunity } from '@/app/actions';
 
-type OpportunityPageProps = {
-  params: {
-    id: string;
-  };
-};
-
-export default function OpportunityPage({ params }: OpportunityPageProps) {
+export default function OpportunityPage() {
   const router = useRouter();
+  const params = useParams();
   const { toast } = useToast();
   const { isAuthenticated, userRole } = useAuth();
   const [opportunity, setOpportunity] = useState<Internship | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isApplying, setIsApplying] = useState(false);
-  const opportunityId = params.id;
+  const opportunityId = params.id as string;
 
   useEffect(() => {
-    const fetchedOpportunity = getInternshipById(opportunityId);
-    if (fetchedOpportunity) {
-      setOpportunity(fetchedOpportunity);
+    if (opportunityId) {
+        const fetchedOpportunity = getInternshipById(opportunityId);
+        if (fetchedOpportunity) {
+          setOpportunity(fetchedOpportunity);
+        }
+        setIsLoading(false);
     }
-    setIsLoading(false);
   }, [opportunityId]);
 
   if (isLoading) {
