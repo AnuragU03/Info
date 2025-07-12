@@ -21,6 +21,7 @@ const languages = [
   { code: 'ta', name: 'தமிழ்' }, // Tamil
   { code: 'te', name: 'తెలుగు' }, // Telugu
   { code: 'mr', name: 'मराठी' }, // Marathi
+  { code: 'kn', name: 'ಕನ್ನಡ' }, // Kannada
 ];
 
 export function Header() {
