@@ -15,11 +15,16 @@ import { revalidatePath } from 'next/cache';
 
 export async function getNearbyAttractions(villageName: string, latitude: number, longitude: number) {
   try {
-    const result = await suggestNearbyAttractions({ villageName, latitude, longitude });
-    return result.nearbyAttractions;
+    // Simulate network delay and return hardcoded data
+    await new Promise(resolve => setTimeout(resolve, 500)); 
+    return [
+        'Living Root Bridge',
+        'Nohkalikai Waterfalls',
+        'Mawsmai Cave',
+        'Dawki River'
+    ];
   } catch (error) {
     console.error('Error fetching nearby attractions:', error);
-    // In a real app, you'd handle this more gracefully
     return ['Could not load attractions at this time.'];
   }
 }
@@ -29,8 +34,9 @@ export async function getInstagramSummary(villageName: string, instagramPosts: s
     return "No recent social media activity found for this village.";
   }
   try {
-    const result = await summarizeInstagramPosts({ villageName, instagramPosts });
-    return result.summary;
+    // Simulate network delay and return hardcoded data
+    await new Promise(resolve => setTimeout(resolve, 500));
+    return "Travelers are captivated by the stunning natural beauty and the unique cultural experiences offered here. Many posts highlight the warm hospitality of the local community and the delicious traditional food.";
   } catch (error) {
     console.error('Error summarizing Instagram posts:', error);
     return 'Could not generate social media summary at this time.';
