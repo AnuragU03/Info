@@ -1,6 +1,7 @@
 
 'use client';
 
+import { useState } from 'react';
 import { getBookingsByOwner, getApplicationsByUser } from '@/lib/mock-data';
 import {
   Table,
@@ -12,7 +13,7 @@ import {
 } from '@/components/ui/table';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { CalendarCheck, FileText } from 'lucide-react';
+import { CalendarCheck, FileText, CircleDollarSign } from 'lucide-react';
 import { useAuth } from '@/context/auth-context';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
@@ -23,6 +24,7 @@ export default function UserDashboardPage() {
   
   const ownerBookings = getBookingsByOwner(userId);
   const userApplications = getApplicationsByUser(userId);
+  const [villageCoins] = useState(1250); // Mock data for VillageCoins balance
 
   const statusVariant = (status: string) => {
     switch (status) {
@@ -49,9 +51,23 @@ export default function UserDashboardPage() {
           User Dashboard
         </h1>
         <p className="text-lg text-muted-foreground mt-2">
-          Manage your bookings and applications.
+          Manage your bookings, applications, and rewards.
         </p>
       </div>
+
+      <Card className="mb-8 bg-accent/20 border-accent/50">
+        <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+                <CircleDollarSign className="h-6 w-6 text-accent" />
+                VillageCoins Balance
+            </CardTitle>
+            <CardDescription>Your rewards for contributing to the rural economy.</CardDescription>
+        </CardHeader>
+        <CardContent>
+            <div className="text-4xl font-bold text-accent">{villageCoins.toLocaleString()}</div>
+            <p className="text-sm text-accent/80 mt-1">Earn coins by hosting, teaching skills, and adopting eco-practices. Use them for supplies or promoting your listing!</p>
+        </CardContent>
+      </Card>
       
       <Tabs defaultValue="applications" className="w-full">
         <TabsList className="grid w-full grid-cols-2">
