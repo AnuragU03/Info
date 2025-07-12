@@ -20,9 +20,15 @@ export function NearbyAttractions({ villageName, latitude, longitude }: NearbyAt
   useEffect(() => {
     async function fetchAttractions() {
       setLoading(true);
-      const result = await getNearbyAttractions(villageName, latitude, longitude);
-      setAttractions(result);
-      setLoading(false);
+      try {
+        const result = await getNearbyAttractions(villageName, latitude, longitude);
+        setAttractions(result);
+      } catch (error) {
+        console.error("Failed to fetch nearby attractions", error);
+        setAttractions(["Could not load attractions."]);
+      } finally {
+        setLoading(false);
+      }
     }
     fetchAttractions();
   }, [villageName, latitude, longitude]);

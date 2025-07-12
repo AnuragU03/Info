@@ -4,7 +4,7 @@
 import { useEffect, useState } from 'react';
 import { getInstagramSummary } from '@/app/actions';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
-import { Instagram, MessageCircle } from 'lucide-react';
+import { Instagram } from 'lucide-react';
 import { Skeleton } from './ui/skeleton';
 
 type InstagramSummaryProps = {
@@ -19,9 +19,15 @@ export function InstagramSummary({ villageName, posts }: InstagramSummaryProps) 
   useEffect(() => {
     async function fetchSummary() {
       setLoading(true);
-      const result = await getInstagramSummary(villageName, posts);
-      setSummary(result);
-      setLoading(false);
+      try {
+        const result = await getInstagramSummary(villageName, posts);
+        setSummary(result);
+      } catch (error) {
+        console.error("Failed to get Instagram summary:", error);
+        setSummary("Could not generate social media summary at this time.");
+      } finally {
+        setLoading(false);
+      }
     }
     fetchSummary();
   }, [villageName, posts]);

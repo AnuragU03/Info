@@ -52,9 +52,15 @@ export function ItineraryPlanner({ villageName, culturalAttractions, uniqueOffer
     setIsOpen(true);
     setItinerary(''); // Clear previous itinerary
     setLoading(true);
-    const result = await getItinerary({ villageName, culturalAttractions, uniqueOfferings, numberOfDays: days });
-    setItinerary(result);
-    setLoading(false);
+    try {
+      const result = await getItinerary({ villageName, culturalAttractions, uniqueOfferings, numberOfDays: days });
+      setItinerary(result);
+    } catch (error) {
+      console.error("Failed to generate itinerary:", error);
+      setItinerary("Sorry, we couldn't generate an itinerary at this time.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -79,7 +85,7 @@ export function ItineraryPlanner({ villageName, culturalAttractions, uniqueOffer
                 </Button>
               </div>
             </div>
-          <Button onClick={handlePlanTrip} className="w-full" size="lg">
+          <Button onClick={handlePlanTrip} className="w-full" size="lg" disabled={loading}>
             {loading ? <Loader2 className="mr-2 h-5 w-5 animate-spin" /> : <Sparkles className="mr-2 h-5 w-5" />}
             Plan My {days}-Day Trip
           </Button>
