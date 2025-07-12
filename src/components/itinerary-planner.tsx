@@ -28,14 +28,15 @@ const MarkdownRenderer = ({ content }: { content: string }) => {
       .split('\n')
       .map(line => {
         if (line.startsWith('# ')) return `<h1>${line.substring(2)}</h1>`;
-        if (line.startsWith('## ')) return `<h2>${line.substring(3)}</h2>`;
-        if (line.startsWith('### ')) return `<h3>${line.substring(4)}</h3>`;
-        if (line.startsWith('* ')) return `<li>${line.substring(2)}</li>`;
+        if (line.startsWith('## ')) return `<h2 class="text-xl font-semibold mt-4 mb-2">${line.substring(3)}</h2>`;
+        if (line.startsWith('### ')) return `<h3 class="text-lg font-semibold mt-3 mb-1">${line.substring(4)}</h3>`;
+        if (line.trim().startsWith('* ')) return `<li class="ml-4 list-disc">${line.substring(2)}</li>`;
+        if (line.trim() === '') return `<br/>`
         return `<p>${line}</p>`;
       })
       .join('')
       .replace(/<\/li>(\s*)<li>/g, '</li><li>') // fix list spacing
-      .replace(/<p><\/p>/g, '<br/>');
+      
   
     return <div className="prose prose-sm dark:prose-invert max-w-none" dangerouslySetInnerHTML={{ __html: html }} />;
   };
