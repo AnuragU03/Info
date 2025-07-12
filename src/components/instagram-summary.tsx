@@ -18,6 +18,7 @@ export function InstagramSummary({ villageName, posts }: InstagramSummaryProps) 
 
   useEffect(() => {
     async function fetchSummary() {
+      if (!villageName) return; // Don't fetch if props aren't ready
       setLoading(true);
       try {
         const result = await getInstagramSummary(villageName, posts);

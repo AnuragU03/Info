@@ -19,6 +19,7 @@ export function NearbyAttractions({ villageName, latitude, longitude }: NearbyAt
 
   useEffect(() => {
     async function fetchAttractions() {
+      if (!villageName) return; // Don't fetch if props aren't ready
       setLoading(true);
       try {
         const result = await getNearbyAttractions(villageName, latitude, longitude);
