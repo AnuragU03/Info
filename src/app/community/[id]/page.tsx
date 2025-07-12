@@ -9,6 +9,7 @@ import { PostCreator } from '@/components/post-creator';
 import { useEffect, useState } from 'react';
 import type { Village, CommunityPost } from '@/lib/mock-data';
 import { Loader2 } from 'lucide-react';
+import { getCommunityPosts } from '@/lib/mock-data';
 
 type CommunityPageProps = {
     params: {
@@ -18,17 +19,26 @@ type CommunityPageProps = {
 
 export default function CommunityPage({ params }: CommunityPageProps) {
     const villageId = params.id;
-    const [village, setVillage] = useState<Village | null>(null);
+    const [village, setVillage] = useState<Omit<Village, 'communityPosts'> | null>(null);
+    const [posts, setPosts] = useState<CommunityPost[]>([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const fetchVillage = async () => {
+        const fetchVillageData = async () => {
             setLoading(true);
-            const villageData = await getVillageById(villageId);
+            const villageData = getVillageById(villageId);
             setVillage(villageData || null);
+
+            if (villageData) {
+                const communityPosts = await getCommunityPosts(villageId);
+                // Sort posts to show newest first
+                const sortedPosts = communityPosts.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
+                setPosts(sortedPosts);
+            }
+            
             setLoading(false);
         };
-        fetchVillage();
+        fetchVillageData();
     }, [villageId]);
 
     if (loading) {
@@ -49,9 +59,6 @@ export default function CommunityPage({ params }: CommunityPageProps) {
         )
     }
 
-    // Sort posts to show newest first
-    const sortedPosts = village.communityPosts ? [...village.communityPosts].sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()) : [];
-
     return (
         <div className="container mx-auto px-4 py-12">
             <div className="max-w-3xl mx-auto">
@@ -67,8 +74,8 @@ export default function CommunityPage({ params }: CommunityPageProps) {
                 <PostCreator villageId={villageId} villageName={village.name} />
 
                 <div className="space-y-6 mt-8">
-                    {sortedPosts && sortedPosts.length > 0 ? (
-                        sortedPosts.map((post) => (
+                    {posts && posts.length > 0 ? (
+                        posts.map((post) => (
                             <Card key={post.id} className="p-4">
                                 <div className="flex items-start gap-4">
                                     <Avatar>

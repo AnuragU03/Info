@@ -380,18 +380,8 @@ export async function getCommunityPosts(villageId: string): Promise<CommunityPos
     }
 }
 
-export const getVillageById = async (id: string): Promise<Village | undefined> => {
-    const villageData = villages.find((v) => v.id === id);
-    if (!villageData) {
-        return undefined;
-    }
-
-    const posts = await getCommunityPosts(id);
-
-    return {
-        ...villageData,
-        communityPosts: posts,
-    };
+export const getVillageById = (id: string): Omit<Village, 'communityPosts'> | undefined => {
+    return villages.find((v) => v.id === id);
 };
 
 export const getInternshipById = (id: string): Internship | undefined => {
