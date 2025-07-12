@@ -5,6 +5,7 @@ import { summarizeInstagramPosts } from '@/ai/flows/summarize-instagram-posts';
 import { identifyLocationFromImage } from '@/ai/flows/identify-location-from-image';
 import { generateItinerary } from '@/ai/flows/generate-itinerary';
 import { suggestPrice } from '@/ai/flows/suggest-price';
+import { translateText } from '@/ai/flows/translate-text';
 import type { GenerateItineraryInput } from '@/ai/flows/generate-itinerary';
 import type { SuggestPriceInput, SuggestPriceOutput } from '@/ai/flows/suggest-price';
 
@@ -63,5 +64,15 @@ export async function getSuggestedPrice(input: SuggestPriceInput): Promise<Sugge
     } catch (error) {
         console.error('Error suggesting price:', error);
         return null;
+    }
+}
+
+export async function getTranslation(text: string, targetLanguage: string) {
+    try {
+        const result = await translateText({ text, targetLanguage });
+        return result.translatedText;
+    } catch (error) {
+        console.error(`Error translating text to ${targetLanguage}:`, error);
+        return text; // Return original text on error
     }
 }
