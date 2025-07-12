@@ -109,7 +109,7 @@ export default function Home() {
     <div className="flex flex-col items-center">
       <section 
         className="w-full py-20 md:py-32 bg-cover bg-center text-center" 
-        style={{backgroundImage: "url('https://i.ibb.co/p3w8Bf1/incredible-india.jpg')", backgroundBlendMode: 'multiply', backgroundColor: 'rgba(0,0,0,0.4)'}}
+        style={{backgroundImage: "url('https://i.ibb.co/qYJc2Ff/home.png')", backgroundBlendMode: 'multiply', backgroundColor: 'rgba(0,0,0,0.4)'}}
         data-ai-hint="India culture collage"
       >
         <div className="container mx-auto px-4 text-white">
