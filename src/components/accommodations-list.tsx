@@ -6,14 +6,12 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter }
 import { BedDouble, Home, CreditCard, Eye } from "lucide-react";
 import { Button } from "./ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from './ui/dialog';
-import { PannellumViewer } from './pannellum-viewer';
 
 type AccommodationsListProps = {
     accommodations: Accommodation[];
 };
 
 export function AccommodationsList({ accommodations }: AccommodationsListProps) {
-    const [selectedAccommodation, setSelectedAccommodation] = useState<Accommodation | null>(null);
 
     if (!accommodations || accommodations.length === 0) {
         return null;
@@ -44,12 +42,6 @@ export function AccommodationsList({ accommodations }: AccommodationsListProps) 
                                 <p className="text-foreground/80">{item.description}</p>
                             </CardContent>
                             <CardFooter className="flex flex-col sm:flex-row gap-2">
-                                {item.vrImages && item.vrImages.length > 0 && (
-                                     <Button variant="outline" className="w-full" onClick={() => setSelectedAccommodation(item)}>
-                                        <Eye className="mr-2 h-4 w-4" />
-                                        View in 360°
-                                    </Button>
-                                )}
                                 <Button className="w-full">
                                     <CreditCard className="mr-2 h-4 w-4" />
                                     Check Availability & Book
@@ -59,24 +51,6 @@ export function AccommodationsList({ accommodations }: AccommodationsListProps) 
                     ))}
                 </div>
             </div>
-            
-            <Dialog open={!!selectedAccommodation} onOpenChange={(isOpen) => !isOpen && setSelectedAccommodation(null)}>
-                <DialogContent className="sm:max-w-3xl h-[80vh]">
-                    {selectedAccommodation && (
-                        <>
-                            <DialogHeader>
-                                <DialogTitle className="text-2xl font-headline">360° View of {selectedAccommodation.name}</DialogTitle>
-                                <DialogDescription>
-                                    Look around the {selectedAccommodation.type.toLowerCase()}. Click and drag to explore.
-                                </DialogDescription>
-                            </DialogHeader>
-                            <div className="h-full py-4 flex-1">
-                                <PannellumViewer images={selectedAccommodation.vrImages} />
-                            </div>
-                        </>
-                    )}
-                </DialogContent>
-            </Dialog>
         </>
     );
 }
