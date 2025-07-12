@@ -76,16 +76,6 @@ export default function RedeemCoinsPage() {
             {kiranaStores.map((store) => (
               <Card key={store.id} className="flex flex-col group hover:shadow-xl transition-shadow">
                 <CardHeader>
-                  <div className="relative mb-4">
-                    <Image
-                      src={store.imageUrl}
-                      alt={store.name}
-                      width={600}
-                      height={300}
-                      className="rounded-lg object-cover w-full h-48"
-                      data-ai-hint="local store"
-                    />
-                  </div>
                   <CardTitle className="font-headline text-2xl">{store.name}</CardTitle>
                   <CardDescription>{store.villageName}</CardDescription>
                 </CardHeader>
