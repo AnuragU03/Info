@@ -359,7 +359,7 @@ let applications: Application[] = [
     { id: 'APP002', opportunityId: 'volunteer-hampi-festival', opportunityTitle: 'Hampi Utsav Volunteer', villageName: 'Hampi', userId: 'admin', userName: 'Charlie Brown', status: 'Accepted' },
 ];
 
-async function getCommunityPosts(villageId: string): Promise<CommunityPost[]> {
+export async function getCommunityPosts(villageId: string): Promise<CommunityPost[]> {
     try {
         const postsCol = collection(db, 'villages', villageId, 'communityPosts');
         const q = query(postsCol, orderBy('timestamp', 'desc'));
