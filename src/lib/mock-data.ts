@@ -145,19 +145,19 @@ export const villages: Village[] = [
           name: "Lake View Hotel", 
           type: "Hotel", 
           description: "Wake up to mesmerizing views of Nako Lake and the Himalayas.",
-          vrImages: ["https://i.imgur.com/O9i1Lrh.jpg"]
+          vrImages: ["https://i.ibb.co/GfZNpfVt/Nako.jpg"]
         },
         { 
           name: "Himalayan Homestay", 
           type: "Homestay", 
           description: "Experience the warm hospitality of a local Spitian family.",
-          vrImages: ["https://i.imgur.com/O9i1Lrh.jpg"]
+          vrImages: ["https://i.ibb.co/GfZNpfVt/Nako.jpg"]
         },
         { 
           name: "Nako Retreat", 
           type: "Hotel", 
           description: "A peaceful retreat offering comfortable rooms and guided tours.",
-          vrImages: ["https://i.imgur.com/O9i1Lrh.jpg"]
+          vrImages: ["https://i.ibb.co/GfZNpfVt/Nako.jpg"]
         },
     ],
     communityPosts: [
@@ -187,19 +187,19 @@ export const villages: Village[] = [
           name: "Riverside Ruins Homestay", 
           type: "Homestay", 
           description: "A peaceful stay with views of the Tungabhadra river and ancient ruins.",
-          vrImages: ["https://i.imgur.com/SUY4m4v.jpg"]
+          vrImages: ["https://i.ibb.co/spvk9rRY/hampi.jpg"]
         },
         { 
           name: "The Boulder Retreat", 
           type: "Hotel", 
           description: "A unique hotel built amidst Hampi's famous boulders, offering modern comfort.",
-          vrImages: ["https://i.imgur.com/SUY4m4v.jpg"]
+          vrImages: ["https://i.ibb.co/spvk9rRY/hampi.jpg"]
         },
         { 
           name: "Temple View Guesthouse", 
           type: "Hotel", 
           description: "Simple and clean rooms located conveniently near the main temple complex.",
-          vrImages: ["https://i.imgur.com/SUY4m4v.jpg"]
+          vrImages: ["https://i.ibb.co/spvk9rRY/hampi.jpg"]
         },
     ],
     communityPosts: [
@@ -230,19 +230,19 @@ export const villages: Village[] = [
           name: "Coffee County Homestay", 
           type: "Homestay", 
           description: "Stay amidst a coffee plantation and learn about coffee making.",
-          vrImages: ["https://i.imgur.com/m4nwu3d.jpg"]
+          vrImages: ["https://i.ibb.co/0jndZX39/arakuvalley.jpg"]
         },
         { 
           name: "Valley View Resort", 
           type: "Hotel", 
           description: "A resort offering panoramic views of the entire Araku Valley.",
-          vrImages: ["https://i.imgur.com/m4nwu3d.jpg"]
+          vrImages: ["https://i.ibb.co/0jndZX39/arakuvalley.jpg"]
         },
         { 
           name: "Tribal Traditions", 
           type: "Homestay", 
           description: "An authentic stay with a local tribal family to learn their way of life.",
-          vrImages: ["https://i.imgur.com/m4nwu3d.jpg"]
+          vrImages: ["https://i.ibb.co/0jndZX39/arakuvalley.jpg"]
         },
     ],
     communityPosts: []
@@ -304,7 +304,7 @@ export const internships: Internship[] = [
         "Prepare a final report summarizing your findings."
     ],
     benefits: ["Project Credit for Thesis/Portfolio", "Work with local artisans", "Experience high-altitude living"],
-    imageUrl: "https://placehold.co/600x400.png",
+    imageUrl: "https://i.ibb.co/BH6rmQrQ/sustainable.jpg",
     sdgs: [4, 9, 11]
   },
   {
@@ -323,7 +323,7 @@ export const internships: Internship[] = [
         "Write blog posts or articles about your experiences."
     ],
     benefits: ["Learn documentary filmmaking", "Contribute to cultural preservation", "Immersive cultural experience"],
-    imageUrl: "https://placehold.co/600x400.png",
+    imageUrl: "https://i.ibb.co/5hMkrd43/story.jpg",
     sdgs: [4, 10]
   }
 ];
