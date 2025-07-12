@@ -35,14 +35,15 @@ export default function OpportunityPage({ params }: OpportunityPageProps) {
   const [opportunity, setOpportunity] = useState<Internship | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isApplying, setIsApplying] = useState(false);
+  const opportunityId = params.id;
 
   useEffect(() => {
-    const fetchedOpportunity = getInternshipById(params.id);
+    const fetchedOpportunity = getInternshipById(opportunityId);
     if (fetchedOpportunity) {
       setOpportunity(fetchedOpportunity);
     }
     setIsLoading(false);
-  }, [params.id]);
+  }, [opportunityId]);
 
   if (isLoading) {
     return <div className="container mx-auto px-4 py-16 md:py-24 text-center"><Loader2 className="h-8 w-8 animate-spin mx-auto" /></div>;
