@@ -1,8 +1,7 @@
 
 import { getVillageById } from "@/lib/mock-data";
 import { notFound } from "next/navigation";
-import { Badge } from "@/components/ui/badge";
-import { MapPin, Trees, Sun, Eye } from "lucide-react";
+import { MapPin, Trees, Sun } from "lucide-react";
 import { NearbyAttractions } from "@/components/nearby-attractions";
 import { InstagramSummary } from "@/components/instagram-summary";
 import { PannellumViewer } from "@/components/pannellum-viewer";
@@ -78,7 +77,7 @@ export default async function VillagePage({ params }: VillagePageProps) {
             culturalAttractions={village.culturalAttractions}
             uniqueOfferings={village.uniqueOfferings}
           />
-          <NearbyAttractions 
+          <NearbyAttractions
             villageName={village.name}
             latitude={village.coordinates.latitude}
             longitude={village.coordinates.longitude}
