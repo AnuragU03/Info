@@ -11,7 +11,7 @@ import { useTranslation } from "@/hooks/use-translation";
 import { useToast } from "@/hooks/use-toast";
 
 export default function Home() {
-  const { t, currentLanguage } = useTranslation();
+  const { t, setLanguage, currentLanguage } = useTranslation();
   const { toast } = useToast();
   const [isListening, setIsListening] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -82,11 +82,17 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center">
       <section 
-        className="w-full py-20 md:py-32 text-center bg-muted/50"
+        className="relative w-full py-20 md:py-32 text-center text-white"
+        style={{
+          backgroundImage: "url('https://i.ibb.co/qMpxhDkp/main.jpg')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
       >
-        <div className="container mx-auto px-4">
-          <h1 className="text-4xl md:text-6xl font-headline font-bold mb-4 text-foreground">{t("Discover India's Soul")}</h1>
-          <p className="text-lg md:text-xl max-w-3xl mx-auto mb-8 text-muted-foreground">
+        <div className="absolute inset-0 bg-black/50 z-0" />
+        <div className="container relative mx-auto px-4 z-10">
+          <h1 className="text-4xl md:text-6xl font-headline font-bold mb-4">{t("Discover India's Soul")}</h1>
+          <p className="text-lg md:text-xl max-w-3xl mx-auto mb-8">
             {t("Journey beyond the cities. Find authentic stays and cultural experiences in India's most beautiful villages.")}
           </p>
           <div className="max-w-2xl mx-auto">
