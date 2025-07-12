@@ -3,15 +3,16 @@
 import { useState } from 'react';
 import { type Accommodation } from "@/lib/mock-data";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from "./ui/card";
-import { BedDouble, Home, CreditCard, Eye } from "lucide-react";
+import { BedDouble, Home, CreditCard } from "lucide-react";
 import { Button } from "./ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from './ui/dialog';
+import { BookingDialog } from './booking-dialog';
 
 type AccommodationsListProps = {
     accommodations: Accommodation[];
 };
 
 export function AccommodationsList({ accommodations }: AccommodationsListProps) {
+    const [selectedAccommodation, setSelectedAccommodation] = useState<Accommodation | null>(null);
 
     if (!accommodations || accommodations.length === 0) {
         return null;
@@ -42,7 +43,7 @@ export function AccommodationsList({ accommodations }: AccommodationsListProps) 
                                 <p className="text-foreground/80">{item.description}</p>
                             </CardContent>
                             <CardFooter className="flex flex-col sm:flex-row gap-2">
-                                <Button className="w-full">
+                                <Button className="w-full" onClick={() => setSelectedAccommodation(item)}>
                                     <CreditCard className="mr-2 h-4 w-4" />
                                     Check Availability & Book
                                 </Button>
@@ -51,6 +52,13 @@ export function AccommodationsList({ accommodations }: AccommodationsListProps) 
                     ))}
                 </div>
             </div>
+            {selectedAccommodation && (
+                <BookingDialog 
+                    isOpen={!!selectedAccommodation}
+                    onClose={() => setSelectedAccommodation(null)}
+                    accommodationName={selectedAccommodation.name}
+                />
+            )}
         </>
     );
 }
