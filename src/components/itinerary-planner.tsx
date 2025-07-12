@@ -11,7 +11,10 @@ import {
   DialogDescription,
 } from '@/components/ui/dialog';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { Loader2, Sparkles } from 'lucide-react';
+import { Loader2, Sparkles, Minus, Plus } from 'lucide-react';
+import { Input } from './ui/input';
+import { Label } from './ui/label';
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 
 type ItineraryPlannerProps = {
   villageName: string;
@@ -41,36 +44,60 @@ export function ItineraryPlanner({ villageName, culturalAttractions, uniqueOffer
   const [isOpen, setIsOpen] = useState(false);
   const [itinerary, setItinerary] = useState('');
   const [loading, setLoading] = useState(false);
+  const [days, setDays] = useState(3);
 
   const handlePlanTrip = async () => {
     setIsOpen(true);
-    if (itinerary) return; // Don't re-fetch if we already have it
-
+    setItinerary(''); // Clear previous itinerary
     setLoading(true);
-    const result = await getItinerary({ villageName, culturalAttractions, uniqueOfferings });
+    const result = await getItinerary({ villageName, culturalAttractions, uniqueOfferings, numberOfDays: days });
     setItinerary(result);
     setLoading(false);
   };
 
   return (
     <>
-      <Button onClick={handlePlanTrip} className="w-full" size="lg">
-        <Sparkles className="mr-2 h-5 w-5" />
-        Plan My Trip with AI
-      </Button>
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2 font-headline">
+            <Sparkles className="h-6 w-6 text-primary" />
+            <span>AI Itinerary Planner</span>
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+            <div>
+              <Label htmlFor="days-input" className="text-sm font-medium">How many days?</Label>
+              <div className="flex items-center gap-2 mt-2">
+                <Button variant="outline" size="icon" className="h-9 w-9" onClick={() => setDays(Math.max(1, days - 1))}>
+                    <Minus className="h-4 w-4" />
+                </Button>
+                <Input id="days-input" type="number" value={days} readOnly className="w-16 h-9 text-center" />
+                <Button variant="outline" size="icon" className="h-9 w-9" onClick={() => setDays(Math.min(10, days + 1))}>
+                    <Plus className="h-4 w-4" />
+                </Button>
+              </div>
+            </div>
+          <Button onClick={handlePlanTrip} className="w-full" size="lg">
+            {loading ? <Loader2 className="mr-2 h-5 w-5 animate-spin" /> : <Sparkles className="mr-2 h-5 w-5" />}
+            Plan My {days}-Day Trip
+          </Button>
+        </CardContent>
+      </Card>
+
 
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogContent className="sm:max-w-2xl">
           <DialogHeader>
-            <DialogTitle className="text-2xl font-headline">Your 3-Day Itinerary for {villageName}</DialogTitle>
+            <DialogTitle className="text-2xl font-headline">Your {days}-Day Itinerary for {villageName}</DialogTitle>
             <DialogDescription>
               An AI-generated plan to help you make the most of your visit.
             </DialogDescription>
           </DialogHeader>
           <div className="py-4">
             {loading ? (
-              <div className="flex items-center justify-center h-64">
+              <div className="flex flex-col items-center justify-center h-64 gap-3">
                 <Loader2 className="h-8 w-8 animate-spin text-primary" />
+                <p className="text-muted-foreground">Crafting your personalized itinerary...</p>
               </div>
             ) : (
               <ScrollArea className="h-96 pr-6">

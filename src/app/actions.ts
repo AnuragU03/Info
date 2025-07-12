@@ -71,12 +71,15 @@ export async function getSuggestedPrice(input: SuggestPriceInput): Promise<Sugge
 }
 
 export async function getTranslation(text: string, targetLanguage: string) {
+    if (!text || !targetLanguage || targetLanguage === 'en') {
+      return text;
+    }
     try {
-        const result = await translateText({ text, targetLanguage });
-        return result.translatedText;
+      const result = await translateText({ text, targetLanguage });
+      return result.translatedText;
     } catch (error) {
-        console.error(`Error translating text to ${targetLanguage}:`, error);
-        return text; // Return original text on error
+      console.error(`Error translating text to ${targetLanguage}:`, error);
+      return text; // Return original text on error
     }
 }
 
