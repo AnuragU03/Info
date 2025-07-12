@@ -50,9 +50,15 @@ export function Header() {
             {t('Discover')}
           </Link>
           <Link
+            href="/internships-volunteering"
+            className="transition-colors hover:text-primary"
+            >
+            {t('Internships')}
+          </Link>
+          <Link
             href="/list-your-space"
             className="transition-colors hover:text-primary"
-          >
+            >
             {t('List Your Space')}
           </Link>
           <Link

@@ -1,4 +1,16 @@
 
+export type Internship = {
+  id: string;
+  title: string;
+  villageId: string;
+  villageName: string;
+  category: 'Internship' | 'Volunteering';
+  duration: string;
+  description: string;
+  benefits: string[];
+  imageUrl: string;
+  sdgs: number[];
+};
 
 export type Accommodation = {
   name: string;
@@ -215,6 +227,57 @@ export const villages: Village[] = [
     ],
     communityPosts: []
   },
+];
+
+export const internships: Internship[] = [
+  {
+    id: "intern-mawali-farming",
+    title: "Organic Farming Internship",
+    villageId: "mawali",
+    villageName: "Mawali, Meghalaya",
+    category: "Internship",
+    duration: "4 Weeks",
+    description: "Learn traditional and sustainable Khasi farming techniques. Work alongside local farmers to cultivate turmeric, ginger, and other organic produce. Gain hands-on experience in permaculture principles.",
+    benefits: ["Experience Certificate", "University Credits Possible", "Stay with a local family"],
+    imageUrl: "https://placehold.co/600x400.png",
+    sdgs: [4, 12]
+  },
+  {
+    id: "volunteer-hampi-festival",
+    title: "Hampi Utsav Volunteer",
+    villageId: "hampi",
+    villageName: "Hampi, Karnataka",
+    category: "Volunteering",
+    duration: "1 Week",
+    description: "Be a part of the vibrant Hampi Utsav, the annual cultural festival. Help with event management, artist coordination, and guest services. A unique opportunity to experience the culture from behind the scenes.",
+    benefits: ["Certificate of Participation", "Free access to all festival events", "Meet local artists and performers"],
+    imageUrl: "https://placehold.co/600x400.png",
+    sdgs: [4, 11]
+  },
+  {
+    id: "intern-nako-architecture",
+    title: "Sustainable Architecture Documentation",
+    villageId: "nako",
+    villageName: "Nako, Himachal Pradesh",
+    category: "Internship",
+    duration: "6 Weeks",
+    description: "For architecture and civil engineering students. Study and document the traditional mud-brick building techniques of Nako. Create architectural drawings and video documentation to help preserve this heritage.",
+    benefits: ["Project Credit for Thesis/Portfolio", "Work with local artisans", "Experience high-altitude living"],
+    imageUrl: "https://placehold.co/600x400.png",
+    sdgs: [4, 9, 11]
+  },
+  {
+    id: "volunteer-araku-doc",
+    title: "Community Storytelling Project",
+    villageId: "araku",
+    villageName: "Araku Valley, Andhra Pradesh",
+    category: "Volunteering",
+    duration: "3 Weeks",
+    description: "Help document the folklore, traditions, and daily life of the tribal communities in Araku. Conduct interviews, shoot videos, and create content that the village can use for its own digital presence.",
+    benefits: ["Learn documentary filmmaking", "Contribute to cultural preservation", "Immersive cultural experience"],
+    imageUrl: "https://placehold.co/600x400.png",
+    sdgs: [4, 10]
+  }
 ];
 
 let bookings: Booking[] = [
