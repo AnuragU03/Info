@@ -5,7 +5,6 @@ import { Badge } from "@/components/ui/badge";
 import { MapPin, Trees, Sun, Eye } from "lucide-react";
 import { NearbyAttractions } from "@/components/nearby-attractions";
 import { InstagramSummary } from "@/components/instagram-summary";
-import { PannellumViewer } from "@/components/pannellum-viewer";
 import { AccommodationsList } from "@/components/accommodations-list";
 import { Separator } from "@/components/ui/separator";
 import { ItineraryPlanner } from "@/components/itinerary-planner";
@@ -38,13 +37,14 @@ export default function VillagePage({ params }: VillagePageProps) {
       <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">
         <div className="lg:col-span-2 space-y-8">
           <div>
-            <h2 className="text-2xl font-headline font-semibold mb-4 flex items-center gap-2">
-                <Eye className="h-6 w-6 text-primary" />
-                360° Interactive View
-            </h2>
-            <div className="aspect-video w-full rounded-lg overflow-hidden border">
-                <PannellumViewer images={village.vrImages} />
-            </div>
+            <Image
+                src={village.mainImage}
+                alt={`A scenic view of ${village.name}`}
+                width={1200}
+                height={675}
+                className="rounded-lg object-cover w-full aspect-video"
+                data-ai-hint={`${village.location.split(',')[0].toLowerCase()} landscape`}
+              />
           </div>
 
           <div className="prose prose-lg max-w-none text-foreground/90">
