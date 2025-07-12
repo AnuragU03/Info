@@ -1,6 +1,6 @@
 
 import { db } from './firebase';
-import { collection, doc, getDoc, getDocs, addDoc, query, orderBy, serverTimestamp, Timestamp } from 'firebase/firestore';
+import { collection, doc, getDoc, getDocs, addDoc, query, orderBy, serverTimestamp, Timestamp, Unsubscribe } from 'firebase/firestore';
 
 export type Internship = {
   id: string;
@@ -407,6 +407,7 @@ export const addPostToVillage = async (villageId: string, post: Omit<CommunityPo
         });
     } catch (error) {
         console.error("Error adding post to village:", error);
+        throw new Error('Failed to add post to village');
     }
 };
 
