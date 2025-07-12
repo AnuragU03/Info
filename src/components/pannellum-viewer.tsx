@@ -3,7 +3,7 @@
 
 import { useRef, useEffect, useState, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
-import { ChevronLeft, ChevronRight, Maximize, Minimize } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Maximize, Minimize, Loader2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 declare global {
