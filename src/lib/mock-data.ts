@@ -369,7 +369,10 @@ let applications: Application[] = [
 
 
 export const getVillageById = (id: string): Village | undefined => {
-  return villages.find((v) => v.id === id);
+  const village = villages.find((v) => v.id === id);
+  if (!village) return undefined;
+  // Return the actual object from the array, not a copy.
+  return village;
 };
 
 export const getInternshipById = (id: string): Internship | undefined => {
@@ -384,6 +387,9 @@ export const addPostToVillage = (villageId: string, post: Omit<CommunityPost, 'i
       id: `post-${Date.now()}`,
       timestamp: new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' }),
     };
+    if (!village.communityPosts) {
+        village.communityPosts = [];
+    }
     village.communityPosts.unshift(newPost);
   }
 };
