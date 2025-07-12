@@ -1,4 +1,5 @@
 
+
 export type Accommodation = {
   name: string;
   type: 'Homestay' | 'Hotel';
@@ -12,6 +13,8 @@ export type CommunityPost = {
   avatarUrl: string;
   timestamp: string;
   message: string;
+  imageUrl?: string;
+  videoUrl?: string;
 };
 
 export type Village = {
@@ -31,6 +34,16 @@ export type Village = {
   uniqueOfferings: string;
   accommodations: Accommodation[];
   communityPosts: CommunityPost[];
+};
+
+export type Booking = {
+    id: string;
+    villageName: string;
+    guestName: string;
+    checkIn: string;
+    checkOut: string;
+    status: 'Confirmed' | 'Pending' | 'Cancelled';
+    ownerId: string;
 };
 
 export const villages: Village[] = [
@@ -208,6 +221,34 @@ export const villages: Village[] = [
   },
 ];
 
+let bookings: Booking[] = [
+    { id: 'BK001', villageName: 'Mawali', guestName: 'Alice Johnson', checkIn: '2024-08-10', checkOut: '2024-08-15', status: 'Confirmed', ownerId: 'owner1' },
+    { id: 'BK002', villageName: 'Nako', guestName: 'Bob Williams', checkIn: '2024-08-12', checkOut: '2024-08-18', status: 'Confirmed', ownerId: 'owner2' },
+    { id: 'BK003', villageName: 'Hampi', guestName: 'Charlie Brown', checkIn: '2024-09-01', checkOut: '2024-09-05', status: 'Pending', ownerId: 'owner3' },
+    { id: 'BK004', villageName: 'Mawali', guestName: 'Diana Prince', checkIn: '2024-09-02', checkOut: '2024-09-07', status: 'Confirmed', ownerId: 'owner1' },
+    { id: 'BK005', villageName: 'Araku Valley', guestName: 'Ethan Hunt', checkIn: '2024-09-20', checkOut: '2024-09-25', status: 'Cancelled', ownerId: 'owner4' },
+];
+
 export const getVillageById = (id: string): Village | undefined => {
   return villages.find((v) => v.id === id);
+};
+
+export const addPostToVillage = (villageId: string, post: Omit<CommunityPost, 'id' | 'timestamp'>) => {
+  const village = getVillageById(villageId);
+  if (village) {
+    const newPost: CommunityPost = {
+      ...post,
+      id: `post-${Date.now()}`,
+      timestamp: new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' }),
+    };
+    village.communityPosts.unshift(newPost);
+  }
+};
+
+export const getAllBookings = (): Booking[] => {
+    return bookings;
+};
+
+export const getBookingsByOwner = (ownerId: string): Booking[] => {
+    return bookings.filter(b => b.ownerId === ownerId);
 };

@@ -2,15 +2,17 @@
 "use client";
 
 import Link from "next/link";
-import { Sprout, Globe } from "lucide-react";
+import { Sprout, Globe, LayoutDashboard, LogOut } from "lucide-react";
 import { Button } from "./ui/button";
 import { useTranslation } from "@/hooks/use-translation";
+import { useAuth } from "@/context/auth-context";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useRouter } from 'next/navigation';
 
 const languages = [
   { code: 'en', name: 'English' },
@@ -23,6 +25,13 @@ const languages = [
 
 export function Header() {
   const { t, setLanguage, currentLanguage } = useTranslation();
+  const { isAuthenticated, userRole, logout } = useAuth();
+  const router = useRouter();
+
+  const handleLogout = () => {
+    logout();
+    router.push('/');
+  };
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -33,7 +42,7 @@ export function Header() {
             VillageStay+
           </span>
         </Link>
-        <nav className="flex items-center gap-6 text-sm font-medium">
+        <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
           <Link
             href="/"
             className="transition-colors hover:text-primary"
@@ -85,8 +94,31 @@ export function Header() {
               ))}
             </DropdownMenuContent>
           </DropdownMenu>
-          <Button variant="ghost">{t('Log In')}</Button>
-          <Button>{t('Sign Up')}</Button>
+
+          {isAuthenticated ? (
+            <>
+               <Button asChild variant="ghost">
+                <Link href={userRole === 'admin' ? '/admin/dashboard' : '/owner/dashboard'}>
+                  <LayoutDashboard className="mr-2 h-4 w-4" />
+                  {t('Dashboard')}
+                </Link>
+              </Button>
+              <Button onClick={handleLogout} variant="outline">
+                <LogOut className="mr-2 h-4 w-4" />
+                {t('Log Out')}
+              </Button>
+            </>
+          ) : (
+            <>
+              <Button variant="ghost" asChild>
+                <Link href="/login">{t('Log In')}</Link>
+              </Button>
+              <Button asChild>
+                <Link href="/login">{t('Sign Up')}</Link>
+              </Button>
+            </>
+          )}
+
         </div>
       </div>
     </header>

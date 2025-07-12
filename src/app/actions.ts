@@ -1,3 +1,4 @@
+
 'use server';
 
 import { suggestNearbyAttractions } from '@/ai/flows/suggest-nearby-attractions';
@@ -8,6 +9,8 @@ import { suggestPrice } from '@/ai/flows/suggest-price';
 import { translateText } from '@/ai/flows/translate-text';
 import type { GenerateItineraryInput } from '@/ai/flows/generate-itinerary';
 import type { SuggestPriceInput, SuggestPriceOutput } from '@/ai/flows/suggest-price';
+import { addPostToVillage as addPostToVillageData, type CommunityPost } from '@/lib/mock-data';
+import { revalidatePath } from 'next/cache';
 
 
 export async function getNearbyAttractions(villageName: string, latitude: number, longitude: number) {
@@ -74,5 +77,16 @@ export async function getTranslation(text: string, targetLanguage: string) {
     } catch (error) {
         console.error(`Error translating text to ${targetLanguage}:`, error);
         return text; // Return original text on error
+    }
+}
+
+export async function addCommunityPost(villageId: string, postData: Omit<CommunityPost, 'id' | 'timestamp'>) {
+    try {
+        addPostToVillageData(villageId, postData);
+        revalidatePath(`/community/${villageId}`);
+        return { success: true };
+    } catch (error) {
+        console.error('Error adding community post:', error);
+        return { success: false, error: 'Could not post message.' };
     }
 }
