@@ -42,8 +42,7 @@ export default function Home() {
         recognition.onresult = (event) => {
             const transcript = event.results[0][0].transcript;
             setSearchQuery(transcript);
-            // Here you would typically trigger a search with the transcript
-            toast({ title: t('Search initiated for:'), description: transcript });
+            toast({ title: t('Search term updated:'), description: transcript });
         };
 
         recognition.onerror = (event) => {
