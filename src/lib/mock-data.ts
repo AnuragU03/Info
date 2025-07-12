@@ -87,7 +87,7 @@ export const villages: Village[] = [
     longDescription: "Nestled in the East Khasi Hills of Meghalaya, Mawali is a picturesque village that offers a unique blend of natural beauty and cultural heritage. It is famed for its incredible living root bridges, handcrafted by the local Khasi tribes over generations. The village is surrounded by dense tropical forests, sparkling waterfalls, and a tranquil atmosphere, making it a perfect escape for nature lovers and those seeking peace.",
     mainImage: "https://i.ibb.co/M9d5dYg/mawali-trek.jpg",
     vrImages: [
-      "https://i.imgur.com/BAnb5y7.jpg",
+      "https://i.ibb.co/6JtXfRtF/Mawlynnong.jpg",
     ],
     coordinates: { latitude: 25.4939, longitude: 91.8756 },
     instagramPosts: [
@@ -102,19 +102,19 @@ export const villages: Village[] = [
           name: "Serene Homestay", 
           type: "Homestay", 
           description: "A cozy stay with a local family, offering authentic Khasi meals.",
-          vrImages: ["https://i.imgur.com/BAnb5y7.jpg"]
+          vrImages: ["https://i.ibb.co/6JtXfRtF/Mawlynnong.jpg"]
         },
         { 
           name: "Root Bridge View Resort", 
           type: "Hotel", 
           description: "A comfortable hotel with stunning views of the surrounding forests.",
-          vrImages: ["https://i.imgur.com/BAnb5y7.jpg"]
+          vrImages: ["https://i.ibb.co/6JtXfRtF/Mawlynnong.jpg"]
         },
         { 
           name: "Jungle Vibe Homestay", 
           type: "Homestay", 
           description: "Experience the jungle up close in this rustic and charming homestay.",
-          vrImages: ["https://i.imgur.com/BAnb5y7.jpg"]
+          vrImages: ["https://i.ibb.co/6JtXfRtF/Mawlynnong.jpg"]
         },
     ],
     communityPosts: [
@@ -435,5 +435,3 @@ export const addApplication = (opportunityId: string, userId: string): Applicati
     applications.push(newApplication);
     return newApplication;
 }
-
-    
