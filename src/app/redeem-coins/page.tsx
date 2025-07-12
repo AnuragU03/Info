@@ -2,7 +2,6 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
 import { kiranaStores, type KiranaStore } from '@/lib/mock-data';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -68,7 +67,7 @@ export default function RedeemCoinsPage() {
               Redeem VillageCoins
             </h1>
             <p className="text-lg text-muted-foreground mt-2">
-              Use your earnings at partnered local stores. Your balance: <span className="font-bold text-accent">{villageCoins}</span> coins.
+              Use your earnings at partnered local stores. Your balance: <span className="font-bold text-accent">{villageCoins.toLocaleString()}</span> coins.
             </p>
           </div>
 
@@ -127,7 +126,7 @@ export default function RedeemCoinsPage() {
                     />
                   </div>
                   <p className="text-xs text-muted-foreground text-center">
-                    Your current balance is {villageCoins} VillageCoins.
+                    Your current balance is {villageCoins.toLocaleString()} VillageCoins.
                   </p>
                 </div>
               )}
