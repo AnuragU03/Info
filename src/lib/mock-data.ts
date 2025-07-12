@@ -172,7 +172,7 @@ export const villages: Village[] = [
     longDescription: "Hampi, a UNESCO World Heritage Site in Karnataka, is a captivating landscape of ancient ruins, giant boulders, and Dravidian temples. Once the capital of the Vijayanagara Empire, its vast, open-air museum is dotted with magnificent temples, palace remains, and riverside ruins that transport you back in time. It's a dream destination for history buffs, rock climbers, and spiritual seekers.",
     mainImage: "https://i.ibb.co/6y1vCjD/hampi-stone-chariot.jpg",
     vrImages: [
-      "https://i.imgur.com/SUY4m4v.jpg",
+      "https://i.ibb.co/spvk9rRY/hampi.jpg",
     ],
     coordinates: { latitude: 15.3350, longitude: 76.4600 },
     instagramPosts: [
