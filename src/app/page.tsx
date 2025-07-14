@@ -84,7 +84,7 @@ export default function Home() {
       <section 
         className="relative w-full py-20 md:py-32 text-center text-white"
         style={{
-          backgroundImage: "url('https://i.ibb.co/cS5w0d7M/main1.jpg')",
+          backgroundImage: "url('https://i.ibb.co/cS5w0d7/main1.jpg')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
@@ -124,7 +124,16 @@ export default function Home() {
           <h2 className="text-3xl md:text-4xl font-headline font-bold text-center mb-12">{t('Featured Villages')}</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {villages.map((village) => (
-              <VillageCard key={village.id} village={village} />
+              <VillageCard 
+                key={village.id} 
+                village={village}
+                // Pass translated strings as props
+                name={t(village.name)}
+                location={t(village.location)}
+                shortDescription={t(village.shortDescription)}
+                discoverText={t('Discover More')}
+                regionText={t(village.location.split(',')[0])}
+              />
             ))}
           </div>
         </div>
