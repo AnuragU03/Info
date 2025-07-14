@@ -1,3 +1,4 @@
+
 import { VillageCard } from "@/components/village-card";
 import { villages } from "@/lib/mock-data";
 import { SearchBar } from "@/components/search-bar";
@@ -15,7 +16,7 @@ export default function Home() {
         className="relative w-full h-[60vh] flex items-center justify-center text-center text-white"
       >
         <Image
-          src="https://i.ibb.co/cS5w0d7/main1.jpg"
+          src="https://i.ibb.co/qMpxhDkp/main.jpg"
           alt="A scenic view of an Indian village"
           layout="fill"
           objectFit="cover"
