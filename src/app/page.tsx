@@ -1,6 +1,7 @@
 import { VillageCard } from "@/components/village-card";
 import { villages } from "@/lib/mock-data";
 import { SearchBar } from "@/components/search-bar";
+import Image from "next/image";
 
 // NOTE: This page is now a Server Component. All client-side interactivity
 // has been moved to the <SearchBar /> component.
@@ -11,15 +12,20 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center">
       <section
-        className="relative w-full py-20 md:py-32 text-center text-white"
-        style={{
-          backgroundImage: "url('https://i.ibb.co/cS5w0d7/main1.jpg')",
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
+        className="relative w-full h-[60vh] flex items-center justify-center text-center text-white"
       >
-        <div className="absolute inset-0 bg-black/50 z-0" />
-        <div className="container relative mx-auto px-4 z-10">
+        <Image
+          src="https://i.ibb.co/cS5w0d7/main1.jpg"
+          alt="A scenic view of an Indian village"
+          layout="fill"
+          objectFit="cover"
+          objectPosition="center"
+          className="z-0"
+          data-ai-hint="village landscape"
+          priority
+        />
+        <div className="absolute inset-0 bg-black/50 z-10" />
+        <div className="container relative mx-auto px-4 z-20">
           <h1 className="text-4xl md:text-6xl font-headline font-bold mb-4">{t("Discover India's Soul")}</h1>
           <p className="text-lg md:text-xl max-w-3xl mx-auto mb-8">
             {t("Journey beyond the cities. Find authentic stays and cultural experiences in India's most beautiful villages.")}
