@@ -18,9 +18,8 @@ export default function Home() {
         <Image
           src="https://cdn.corenexis.com/media?0wqlja&168H&p&b&9zq7.jpg"
           alt="A scenic view of an Indian village"
-          layout="fill"
-          objectFit="cover"
-          objectPosition="center"
+          fill={true}
+          style={{objectFit: "cover", objectPosition: "center"}}
           className="z-0"
           data-ai-hint="village landscape"
           priority
