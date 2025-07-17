@@ -16,7 +16,7 @@ export default function Home() {
         className="relative w-full h-[60vh] flex items-center justify-center text-center text-white"
       >
         <Image
-          src="https://cdn.corenexis.com/media?0wqlja&168H&p&b&9zq7.jpg"
+          src="https://wallpaperaccess.com/full/505018.jpg"
           alt="A scenic view of an Indian village"
           fill={true}
           style={{objectFit: "cover", objectPosition: "center"}}
