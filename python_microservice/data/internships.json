@@ -1,0 +1,40 @@
+[
+  {
+    "id": "intern-mawali-farming",
+    "title": "Organic Farming Internship",
+    "villageId": "mawali",
+    "villageName": "Mawali, Meghalaya",
+    "category": "Internship",
+    "duration": "4 Weeks",
+    "description": "Learn traditional and sustainable Khasi farming techniques. Work alongside local farmers to cultivate turmeric, ginger, and other organic produce.",
+    "longDescription": "Dive deep into the world of sustainable agriculture with this hands-on internship. You will be paired with an experienced local farmer in Mawali who will mentor you in the art of organic farming as practiced by the Khasi people for generations. This is more than just farming; it's about understanding the ecosystem and living in harmony with it.",
+    "responsibilities": [
+      "Assist in day-to-day farm activities like planting, weeding, and harvesting.",
+      "Learn about natural pest control methods and companion planting.",
+      "Help in composting and creating organic fertilizers.",
+      "Document farming techniques through photos and notes."
+    ],
+    "benefits": ["Experience Certificate", "University Credits Possible", "Stay and meals with a local family"],
+    "imageUrl": "https://i.ibb.co/qLJ3H3y1/organic.jpg",
+    "sdgs": [4, 12]
+  },
+  {
+    "id": "volunteer-hampi-festival",
+    "title": "Hampi Utsav Volunteer",
+    "villageId": "hampi",
+    "villageName": "Hampi, Karnataka",
+    "category": "Volunteering",
+    "duration": "1 Week",
+    "description": "Be a part of the vibrant Hampi Utsav, the annual cultural festival. Help with event management, artist coordination, and guest services.",
+    "longDescription": "Experience the magnificent Hampi Utsav from the inside! As a volunteer, you will be an essential part of the team that brings this grand celebration of music, dance, and culture to life. This is a fast-paced, exciting opportunity for those who love culture and event management.",
+    "responsibilities": [
+      "Assisting with stage setup and artist logistics.",
+      "Managing information desks for tourists.",
+      "Helping coordinate cultural workshops and competitions.",
+      "Supporting the social media team with live updates."
+    ],
+    "benefits": ["Certificate of Participation", "Free access to all festival events", "Meet local artists and performers"],
+    "imageUrl": "https://i.ibb.co/CpRtvv4j/hampi-utsav.jpg",
+    "sdgs": [4, 11]
+  }
+] 

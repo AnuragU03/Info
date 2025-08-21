@@ -1,0 +1,4 @@
+[
+  { "id": "BK001", "villageName": "Mawali", "guestName": "Alice Johnson", "checkIn": "2024-08-10", "checkOut": "2024-08-15", "status": "Confirmed", "ownerId": "owner" },
+  { "id": "BK002", "villageName": "Nako", "guestName": "Bob Williams", "checkIn": "2024-08-12", "checkOut": "2024-08-18", "status": "Confirmed", "ownerId": "owner" }
+] 

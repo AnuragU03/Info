@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d10" for="node" attr.name="activities" attr.type="string" />
+  <key id="d9" for="node" attr.name="local_specialties" attr.type="string" />
+  <key id="d8" for="node" attr.name="primary_attractions" attr.type="string" />
+  <key id="d7" for="node" attr.name="country" attr.type="string" />
+  <key id="d6" for="node" attr.name="district" attr.type="string" />
+  <key id="d5" for="node" attr.name="city" attr.type="string" />
+  <key id="d4" for="node" attr.name="address" attr.type="string" />
+  <key id="d3" for="node" attr.name="longitude" attr.type="double" />
+  <key id="d2" for="node" attr.name="latitude" attr.type="double" />
+  <key id="d1" for="node" attr.name="state" attr.type="string" />
+  <key id="d0" for="node" attr.name="village_name" attr.type="string" />
+  <graph edgedefault="undirected">
+    <node id="hubli">
+      <data key="d0">hubli</data>
+      <data key="d1" />
+      <data key="d2">15.3518378</data>
+      <data key="d3">75.1379848</data>
+      <data key="d4">Hubballi, Hubballi Urban Taluku, Dharwad, Karnataka, 580020, India</data>
+      <data key="d5" />
+      <data key="d6" />
+      <data key="d7" />
+      <data key="d8">Agadi Thota, Nrupatunga Betta, Unkal Lake, Chandramouleshwara Temple, Siddharoodha Math, Glass House Garden, Navagraha Teertha, Gayatri Tapovan, Gangubai Hanagal Memorial Musical Museum, Jog Falls View Point, Amboli Water Fall, Bheemeshwara Waterfall, Indira Gandhi Glass House, Utsav Rock Garden</data>
+      <data key="d9" />
+      <data key="d10">Multi-day Tours, Games, Art events, Walks, Picnics, Water park visits</data>
+    </node>
+    <node id="belgaum">
+      <data key="d0">belgaum</data>
+      <data key="d1" />
+      <data key="d2">15.8572666</data>
+      <data key="d3">74.5069343</data>
+      <data key="d4">Belagavi, Belagavi taluku, Belagavi, Karnataka, 590001, India</data>
+      <data key="d5" />
+      <data key="d6" />
+      <data key="d7" />
+      <data key="d8">Gokak Falls, Jamboti Hills, Shri Hari Mandir, Vajrapoha Falls, Kamala Basti, Hidden Falls in Kalmani, Pilikula Nisargadhama, Devbagh beach</data>
+      <data key="d9" />
+      <data key="d10">Trekking, Exploring gardens</data>
+    </node>
+    <node id="PY">
+      <data key="d0">PY</data>
+      <data key="d1" />
+      <data key="d2">10.9156489</data>
+      <data key="d3">79.8069488</data>
+      <data key="d4">Puducherry, India</data>
+      <data key="d5" />
+      <data key="d6" />
+      <data key="d7" />
+      <data key="d8">Eastern State Penitentiary, Wagner Free Institute, Knoebels Amusement Resort, Fallingwater</data>
+      <data key="d9" />
+      <data key="d10">Visiting Philadelphia Zoo, Enjoying a show at the Storybook Theatre, Escape Games, Go Karts</data>
+    </node>
+  </graph>
+</graphml>

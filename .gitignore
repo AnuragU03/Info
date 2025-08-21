@@ -9,6 +9,10 @@
 !.yarn/plugins
 !.yarn/releases
 !.yarn/versions
+python_microservice/__pycache__/
+*.pyc
+*.pyo
+*.pyd
 
 # testing
 /coverage
@@ -19,6 +23,7 @@
 
 # production
 /build
+/dist
 
 # misc
 .DS_Store
@@ -37,9 +42,25 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# AI/ML
 .genkit/*
+
+# Environment variables
 .env*
+!.env.example
 
 # firebase
 firebase-debug.log
 firestore-debug.log
+
+# Git
+COMMIT_EDITMSG
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+Thumbs.db

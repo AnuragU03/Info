@@ -1,0 +1,36 @@
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import { Toaster } from "@/components/ui/toaster";
+import { Header } from '@/components/header';
+import { Footer } from '@/components/footer';
+import { RootProviders } from './root-providers';
+import './globals.css';
+
+const inter = Inter({ subsets: ['latin'] });
+
+export const metadata: Metadata = {
+  title: 'VillageStay+',
+  description: 'A decentralized, AI-powered rural tourism platform.',
+};
+
+interface RootLayoutProps {
+  children: React.ReactNode;
+}
+
+export default async function RootLayout({ children }: RootLayoutProps) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <head />
+      <body className={`${inter.className} font-body antialiased flex flex-col min-h-screen`}>
+        <RootProviders>
+          <Header />
+          <main className="flex-1">
+            {children}
+          </main>
+          <Footer />
+          <Toaster />
+        </RootProviders>
+      </body>
+    </html>
+  );
+}

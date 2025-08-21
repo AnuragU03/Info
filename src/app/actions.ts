@@ -2,6 +2,7 @@
 'use server';
 
 import { suggestNearbyAttractions } from '@/ai/flows/suggest-nearby-attractions';
+import { microserviceAPI } from '../lib/api-service';
 import { summarizeInstagramPosts } from '@/ai/flows/summarize-instagram-posts';
 import { identifyLocationFromImage } from '@/ai/flows/identify-location-from-image';
 import { generateItinerary } from '@/ai/flows/generate-itinerary';
@@ -15,14 +16,17 @@ import { revalidatePath } from 'next/cache';
 
 export async function getNearbyAttractions(villageName: string, latitude: number, longitude: number) {
   try {
-    // Simulate network delay and return hardcoded data
-    await new Promise(resolve => setTimeout(resolve, 500)); 
-    return [
-        'Living Root Bridge',
-        'Nohkalikai Waterfalls',
-        'Mawsmai Cave',
-        'Dawki River'
-    ];
+    // Prefer microservice search if available
+    const resp = await microserviceAPI.searchVillage(villageName);
+    // The microservice returns primary_attractions, local_specialties, activities
+    if (resp && Array.isArray(resp.primary_attractions) && resp.primary_attractions.length > 0) {
+      return resp.primary_attractions;
+    }
+
+    // Fallback to AI flow if microservice didn't return useful data
+    await new Promise(resolve => setTimeout(resolve, 300));
+    const aiResult = await suggestNearbyAttractions({ villageName, latitude, longitude });
+    return aiResult.nearbyAttractions;
   } catch (error) {
     console.error('Error fetching nearby attractions:', error);
     return ['Could not load attractions at this time.'];

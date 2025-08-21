@@ -1,0 +1,4 @@
+[
+  { "id": "APP001", "opportunityId": "intern-mawali-farming", "opportunityTitle": "Organic Farming Internship", "villageName": "Mawali", "userId": "owner", "userName": "Diana Prince", "status": "Under Review" },
+  { "id": "APP002", "opportunityId": "volunteer-hampi-festival", "opportunityTitle": "Hampi Utsav Volunteer", "villageName": "Hampi", "userId": "admin", "userName": "Charlie Brown", "status": "Accepted" }
+] 

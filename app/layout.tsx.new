@@ -1,0 +1,45 @@
+'use client';
+
+import * as React from 'react';
+import type { Metadata } from 'next';
+import { Toaster } from "@/components/ui/toaster"
+import { Header } from '@/components/header';
+import { Footer } from '@/components/footer';
+import { TranslationProvider } from '@/context/translation-context';
+import { AuthProvider } from '@/context/auth-context';
+import { ThemeProvider } from '@/components/theme-provider';
+import './globals.css';
+
+export const metadata: Metadata = {
+  title: 'VillageStay+',
+  description: 'A decentralized, AI-powered rural tourism platform.',
+};
+
+interface RootLayoutProps {
+  children: React.ReactNode;
+}
+
+export default function RootLayout({ children }: RootLayoutProps): JSX.Element {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <body className="font-body antialiased flex flex-col min-h-screen">
+        <ThemeProvider 
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+        >
+          <AuthProvider>
+            <TranslationProvider>
+              <Header />
+              <main className="flex-1">
+                {children}
+              </main>
+              <Footer />
+              <Toaster />
+            </TranslationProvider>
+          </AuthProvider>
+        </ThemeProvider>
+      </body>
+    </html>
+  );
+}

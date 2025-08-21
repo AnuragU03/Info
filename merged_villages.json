@@ -1,0 +1,85 @@
+[
+  {
+    "village_name": "hubli",
+    "state": "",
+    "latitude": 15.3518378,
+    "longitude": 75.1379848,
+    "address": "Hubballi, Hubballi Urban Taluku, Dharwad, Karnataka, 580020, India",
+    "city": "",
+    "district": "",
+    "country": "",
+    "primary_attractions": [
+      "Agadi Thota",
+      "Nrupatunga Betta",
+      "Unkal Lake",
+      "Chandramouleshwara Temple",
+      "Siddharoodha Math",
+      "Glass House Garden",
+      "Navagraha Teertha",
+      "Gayatri Tapovan",
+      "Gangubai Hanagal Memorial Musical Museum",
+      "Jog Falls View Point",
+      "Amboli Water Fall",
+      "Bheemeshwara Waterfall",
+      "Indira Gandhi Glass House",
+      "Utsav Rock Garden"
+    ],
+    "local_specialties": [],
+    "activities": [
+      "Multi-day Tours",
+      "Games",
+      "Art events",
+      "Walks",
+      "Picnics",
+      "Water park visits"
+    ]
+  },
+  {
+    "village_name": "belgaum",
+    "state": "",
+    "latitude": 15.8572666,
+    "longitude": 74.5069343,
+    "address": "Belagavi, Belagavi taluku, Belagavi, Karnataka, 590001, India",
+    "city": "",
+    "district": "",
+    "country": "",
+    "primary_attractions": [
+      "Gokak Falls",
+      "Jamboti Hills",
+      "Shri Hari Mandir",
+      "Vajrapoha Falls",
+      "Kamala Basti",
+      "Hidden Falls in Kalmani",
+      "Pilikula Nisargadhama",
+      "Devbagh beach"
+    ],
+    "local_specialties": [],
+    "activities": [
+      "Trekking",
+      "Exploring gardens"
+    ]
+  },
+  {
+    "village_name": "PY",
+    "state": "",
+    "latitude": 10.9156489,
+    "longitude": 79.8069488,
+    "address": "Puducherry, India",
+    "city": "",
+    "district": "",
+    "country": "",
+    "primary_attractions": [
+      "Eastern State Penitentiary",
+      "Wagner Free Institute",
+      "Knoebels Amusement Resort",
+      "Fallingwater"
+    ],
+    "local_specialties": [],
+    "activities": [
+      "Visiting Philadelphia Zoo",
+      "Enjoying a show at the Storybook Theatre",
+      "Escape Games",
+      "Go Karts"
+    ]
+  }
+]
